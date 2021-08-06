@@ -1,11 +1,7 @@
 import Image from "next/image";
 
-const Brand = ({ children }) => {
-  return (
-    <div className="font-bold text-4xl">
-      <Image src="/logo.svg" height={40} width={180}></Image>
-    </div>
-  );
+const Brand = () => {
+  return <Image src="/logo.svg" height={40} width={200}></Image>;
 };
 
 export default Brand;
