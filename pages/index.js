@@ -1,9 +1,10 @@
 import Head from "next/head";
 import Link from "next/link";
+import Layout from "../components/layout";
 export default function Home() {
   return (
-    <div>
-      <h1>App</h1>
-    </div>
+    <Layout>
+      <h1>Hello World</h1>
+    </Layout>
   );
 }
