@@ -3,9 +3,9 @@ import Form from "../components/form";
 import Input from "../components/input";
 import PrimaryButton from "../components/primary_button";
 import Image from "next/image";
-import GoogleIcon from "./google_icon";
-import GithubIcon from "./github_icon";
-import AppleIcon from "./apple_icon";
+import GoogleIcon from "./icons/google_icon";
+import GithubIcon from "./icons/github_icon";
+import AppleIcon from "./icons/apple_icon";
 
 const LoginForm = () => {
   return (

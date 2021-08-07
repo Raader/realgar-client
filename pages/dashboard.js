@@ -1,23 +1,57 @@
 import { CashIcon } from "@heroicons/react/solid";
+import AppleMusicIcon from "../components/icons/apple_music_icon";
+import NetflixIcon from "../components/icons/netflix_icon";
+import SpotifyIcon from "../components/icons/spotify_icon";
 import Layout from "../components/layout";
 import Payment from "../components/payment";
 
+const icons = {
+  appleMusic: (
+    <div className="bg-gray-100 rounded-xl p-2">
+      <AppleMusicIcon className="w-6 h-6 text-red-400"></AppleMusicIcon>
+    </div>
+  ),
+  netflix: (
+    <div className="bg-black rounded-xl p-2">
+      <NetflixIcon className="w-6 h-6 text-red-600"></NetflixIcon>
+    </div>
+  ),
+  spotify: (
+    <div className="bg-green-400 rounded-xl p-2">
+      <SpotifyIcon className="w-6 h-6 text-white"></SpotifyIcon>
+    </div>
+  ),
+};
+
 const payments = [
-  { name: "netflix subscription", price: 25, currency: "TRY", type: "monthly" },
   {
-    name: "apple music subscription",
-    price: 13,
+    name: "Netflix subscription",
+    price: "26,99",
     currency: "TRY",
     type: "monthly",
+    icon: "netflix",
   },
   {
-    name: "amazon prime video subscription",
+    name: "Apple Music subscription",
+    price: "13,99",
+    currency: "TRY",
+    type: "monthly",
+    icon: "appleMusic",
+  },
+  {
+    name: "Amazon prime video subscription",
     price: 25,
     currency: "TRY",
     type: "monthly",
   },
 
-  { name: "spotify subscription", price: 15, currency: "TRY", type: "monthly" },
+  {
+    name: "Spotify subscription",
+    price: "15,00",
+    currency: "TRY",
+    type: "monthly",
+    icon: "spotify",
+  },
 
   { name: "namecheap domain", price: 120, currency: "TRY", type: "annual" },
 ];
@@ -31,11 +65,7 @@ const Dashboard = () => {
           <Payment
             {...payment}
             className=""
-            icon={
-              <div className="bg-yellow-200 rounded-xl p-1">
-                <CashIcon className="w-6 h-6 text-yellow-300"></CashIcon>
-              </div>
-            }
+            icon={icons[payment.icon]}
           ></Payment>
         ))}
       </div>
