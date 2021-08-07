@@ -18,7 +18,7 @@ export default function Home() {
               subscriptions and recurring payments. It also notifies user of
               oncoming payments
             </div>
-            <div className="flex flex-row w-full gap-4">
+            <div className="flex flex-row w-full space-x-4">
               <div>
                 <Button>Get Started</Button>
               </div>
