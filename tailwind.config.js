@@ -5,7 +5,9 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: (theme) => ({
-        pattern: "url(/overlapping-circles.svg)",
+        "circle-pattern": "url(/overlapping-circles.svg)",
+        "square-pattern": "url(/squares.svg)",
+        "yyy-pattern": "url(/yyy.svg)",
       }),
     },
   },
