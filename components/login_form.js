@@ -20,19 +20,19 @@ const LoginForm = () => {
       <PrimaryButton block>Log Me In</PrimaryButton>
       <div className="w-full border-b text-gray-500 mb-2 mt-2">OR</div>
       <Button block className="bg-blue-500 hover:bg-blue-600  text-white">
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center space-x-2">
           <GoogleIcon className="w-5 h-5 inline-block"></GoogleIcon>
           <div>Continue With Google</div>
         </div>
       </Button>
       <Button block className="bg-black hover:bg-gray-700 text-white">
-        <div className="flex flex-row items-center gap-2">
+        <div className="flex flex-row items-center space-x-2">
           <AppleIcon className="w-5 h-5 inline-block"></AppleIcon>
           <div>Continue With Apple</div>
         </div>
       </Button>
       <Button block className=" bg-purple-600 hover:bg-purple-700 text-white">
-        <div className="flex flex-row items-center gap-2 text-center">
+        <div className="flex flex-row items-center space-x-2 text-center">
           <GithubIcon className="w-5 h-5 inline-block"></GithubIcon>
           <div>Continue With Github</div>
         </div>
