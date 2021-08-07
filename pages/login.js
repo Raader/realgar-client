@@ -10,7 +10,7 @@ import PrimaryButton from "../components/primary_button";
 const Login = () => {
   return (
     <Layout>
-      <div className="grid grid-cols-1 md:grid-cols-5 m-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 md:mt-10">
         <div className="col-span-3 order-2 md:order-1">
           <Hero>
             <div className="max-w-md">
