@@ -32,10 +32,13 @@ const LoginForm = () => {
         </div>
       </Button>
       <Button block className=" bg-purple-600 hover:bg-purple-700 text-white">
-        <div className="flex flex-row items-center space-x-2 text-center">
+        <a
+          href="https://github.com/login/oauth/authorize?client_id=ed935c9cbedbb8b0fa6d&scope=user:email"
+          className="flex flex-row items-center space-x-2 text-center"
+        >
           <GithubIcon className="w-5 h-5 inline-block"></GithubIcon>
           <div>Continue With Github</div>
-        </div>
+        </a>
       </Button>
       <div className="text-gray-400 m-2">
         Don't have an account? <a className="text-green-300">Sign up here</a>

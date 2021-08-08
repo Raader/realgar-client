@@ -1,9 +1,16 @@
 import Head from "next/head";
 import Link from "next/link";
+import { useEffect } from "react";
 import Button from "../components/button";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
+import { getUser } from "../lib/api";
 export default function Home() {
+  useEffect(() => {
+    getUser()
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+  }, []);
   return (
     <Layout>
       <div className="grid grid-cols-1 lg:grid-cols-5">
