@@ -9,7 +9,7 @@ import AppleIcon from "./icons/apple_icon";
 
 const LoginForm = () => {
   return (
-    <Form>
+    <Form className="text-center">
       <h2 className="text-2xl font-semibold m-4">Sign in to your Account</h2>
       <div>
         <Input placeholder="Email address" type="email"></Input>
