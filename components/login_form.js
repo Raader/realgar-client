@@ -25,7 +25,7 @@ const LoginForm = () => {
           <div>Continue With Google</div>
         </div>
       </Button>
-      <Button block className="bg-black hover:bg-gray-700 text-white">
+      <Button block className="bg-gray-900 hover:bg-gray-700 text-white">
         <div className="flex flex-row items-center space-x-2">
           <AppleIcon className="w-5 h-5 inline-block"></AppleIcon>
           <div>Continue With Apple</div>
