@@ -16,24 +16,30 @@ const AppBar = () => {
     <Navbar>
       <Brand></Brand>
       <NavbarStart>
-        <NavLink icon={<HomeIcon className="h-5 w-5"></HomeIcon>}>Home</NavLink>
+        <NavLink icon={<HomeIcon className="h-5 w-5"></HomeIcon>} href="/">
+          Home
+        </NavLink>
         <NavLink
           icon={
             <InformationCircleIcon className="h-5 w-5"></InformationCircleIcon>
           }
+          href="/about"
         >
           About
         </NavLink>
-        <NavLink icon={<ViewBoardsIcon className="h-5 w-5"></ViewBoardsIcon>}>
+        <NavLink
+          icon={<ViewBoardsIcon className="h-5 w-5"></ViewBoardsIcon>}
+          href="/dashboard"
+        >
           Dashboard
         </NavLink>
       </NavbarStart>
       <NavbarEnd>
         <div>
-          <NavLink>Login</NavLink>
+          <NavLink href="/login">Login</NavLink>
         </div>
         <div className="bg-gray-400 bg-opacity-10 rounded-md whitespace-nowrap">
-          <NavLink>Sign Up</NavLink>
+          <NavLink href="/register">Sign Up</NavLink>
         </div>
       </NavbarEnd>
       <div className="lg:hidden ml-auto">
