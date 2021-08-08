@@ -1,7 +1,7 @@
 import Card from "./card";
 import { CashIcon, CurrencyDollarIcon } from "@heroicons/react/solid";
 
-const Payment = ({ name, price, currency, className, icon }) => {
+const Payment = ({ name, price, currency, className, icon, type }) => {
   return (
     <Card
       className={
@@ -17,7 +17,10 @@ const Payment = ({ name, price, currency, className, icon }) => {
 
       <div className="text-4xl flex flex-row items-baseline font-extrabold space-x-2 text-gray-700">
         <div>{price}</div>
-        <div className="text-xs font-semibold text-gray-500">{currency}</div>
+        <div className="text-xs font-semibold text-gray-500">
+          {currency}
+          <span className=""> / {type}</span>
+        </div>
       </div>
     </Card>
   );
