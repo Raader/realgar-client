@@ -7,8 +7,9 @@ import Payment from "../components/payment";
 import Button from "../components/button";
 import Modal from "../components/modal";
 import PaymentForm from "../components/payment_form";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PaymentModal from "../components/payment_modal";
+import { get } from "../lib/api";
 
 const icons = {
   appleMusic: (
@@ -33,7 +34,7 @@ const icons = {
   ),
 };
 
-const payments = [
+const examplePayments = [
   {
     name: "Netflix subscription",
     price: "26,99",
@@ -68,6 +69,14 @@ const payments = [
 
 const Dashboard = ({ user }) => {
   const [modal, setModal] = useState(false);
+  const [payments, setPayments] = useState([]);
+
+  useEffect(() => {
+    get("/user/payments")
+      .then((data) => setPayments(data))
+      .catch();
+  }, []);
+
   return (
     <Layout user={user}>
       <PaymentModal active={modal} close={() => setModal(false)}></PaymentModal>
