@@ -75,6 +75,7 @@ const Dashboard = () => {
         {payments.map((payment) => (
           <Payment
             {...payment}
+            key={payment.name}
             className=""
             icon={icons[payment.icon] || icons.default}
           ></Payment>

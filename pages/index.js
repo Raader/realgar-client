@@ -4,10 +4,10 @@ import { useEffect } from "react";
 import Button from "../components/button";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
-import { getUser } from "../lib/api";
+import { get } from "../lib/api";
 export default function Home() {
   useEffect(() => {
-    getUser()
+    get("/user")
       .then((data) => console.log(data))
       .catch((err) => console.error(err));
   }, []);
