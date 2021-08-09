@@ -7,6 +7,8 @@ import Payment from "../components/payment";
 import Button from "../components/button";
 import Modal from "../components/modal";
 import PaymentForm from "../components/payment_form";
+import { useState } from "react";
+import PaymentModal from "../components/payment_modal";
 
 const icons = {
   appleMusic: (
@@ -65,11 +67,13 @@ const payments = [
 ];
 
 const Dashboard = ({ user }) => {
+  const [modal, setModal] = useState(false);
   return (
     <Layout user={user}>
+      <PaymentModal active={modal} close={() => setModal(false)}></PaymentModal>
       <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
         <h3 className="text-3xl font-semibold">Recurring Payments</h3>
-        <Button className="ml-auto">
+        <Button className="ml-auto" onClick={() => setModal(true)}>
           <PlusIcon className="w-5 h-5"></PlusIcon>
         </Button>
       </div>
