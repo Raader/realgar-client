@@ -90,7 +90,7 @@ const Dashboard = ({ user }) => {
         {payments.map((payment) => (
           <Payment
             {...payment}
-            key={payment.name}
+            key={payment.id}
             className=""
             icon={icons[payment.icon] || icons.default}
           ></Payment>
