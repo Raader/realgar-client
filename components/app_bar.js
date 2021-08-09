@@ -51,7 +51,7 @@ const AppBar = ({ user }) => {
       </NavbarEnd>
       <div className="lg:hidden ml-auto">
         <MenuDropdown>
-          <MenuIcon className="h-8 w-8"></MenuIcon>
+          <MenuIcon className="h-6 w-6"></MenuIcon>
         </MenuDropdown>
       </div>
     </Navbar>
