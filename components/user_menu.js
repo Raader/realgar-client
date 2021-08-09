@@ -1,11 +1,15 @@
+import { ChevronDownIcon } from "@heroicons/react/outline";
 import Avatar from "./avatar";
+import NavLink from "./nav_link";
 
 const UserMenu = ({ user }) => {
   return (
-    <div className="flex flex-row items-center space-x-2 hover:bg-gray-400 hover:bg-opacity-10 p-2 rounded-md transition duration-200 cursor-pointer">
-      <Avatar></Avatar>
-      <div className="font-semibold text-xl">{user?.username}</div>
-    </div>
+    <NavLink icon={<Avatar></Avatar>} className="hover:text-gray-800 text-xl">
+      <div className="flex items-center space-x-1">
+        <div>{user?.username}</div>{" "}
+        <ChevronDownIcon className="h-5 w-5"></ChevronDownIcon>
+      </div>
+    </NavLink>
   );
 };
 
