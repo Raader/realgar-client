@@ -1,8 +1,16 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
+import { get } from "../lib/api";
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }) {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    get("/user")
+      .then((user) => setUser(user))
+      .catch();
+  }, []);
   return (
     <>
       <Head>
@@ -34,7 +42,7 @@ function MyApp({ Component, pageProps }) {
           content="default"
         ></meta>
       </Head>
-      <Component {...pageProps} />
+      <Component user={user} {...pageProps} />
     </>
   );
 }

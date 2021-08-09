@@ -5,12 +5,10 @@ import Button from "../components/button";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
 import { get } from "../lib/api";
-export default function Home() {
+export default function Home({ user }) {
   useEffect(() => {
-    get("/user")
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err));
-  }, []);
+    console.log(user);
+  }, [user]);
   return (
     <Layout>
       <div className="grid grid-cols-1 lg:grid-cols-5">
