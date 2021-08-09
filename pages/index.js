@@ -10,7 +10,7 @@ export default function Home({ user }) {
     console.log(user);
   }, [user]);
   return (
-    <Layout>
+    <Layout user={user}>
       <div className="grid grid-cols-1 lg:grid-cols-5">
         <div className="col-span-2 max-w-md">
           <Hero>

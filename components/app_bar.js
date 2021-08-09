@@ -10,8 +10,9 @@ import {
   ViewBoardsIcon,
 } from "@heroicons/react/solid";
 import MenuDropdown from "./menu_dropdown";
+import UserMenu from "./user_menu";
 
-const AppBar = () => {
+const AppBar = ({ user }) => {
   return (
     <Navbar>
       <Brand></Brand>
@@ -35,12 +36,18 @@ const AppBar = () => {
         </NavLink>
       </NavbarStart>
       <NavbarEnd>
-        <div>
-          <NavLink href="/login">Login</NavLink>
-        </div>
-        <div className="bg-gray-400 bg-opacity-10 rounded-md whitespace-nowrap">
-          <NavLink href="/register">Sign Up</NavLink>
-        </div>
+        {user ? (
+          <UserMenu user={user}></UserMenu>
+        ) : (
+          <>
+            <div>
+              <NavLink href="/login">Login</NavLink>
+            </div>
+            <div className="bg-gray-400 bg-opacity-10 rounded-md whitespace-nowrap">
+              <NavLink href="/register">Sign Up</NavLink>
+            </div>
+          </>
+        )}
       </NavbarEnd>
       <div className="lg:hidden ml-auto">
         <MenuDropdown>
