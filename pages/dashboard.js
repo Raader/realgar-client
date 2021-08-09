@@ -5,6 +5,8 @@ import SpotifyIcon from "../components/icons/spotify_icon";
 import Layout from "../components/layout";
 import Payment from "../components/payment";
 import Button from "../components/button";
+import Modal from "../components/modal";
+import PaymentForm from "../components/payment_form";
 
 const icons = {
   appleMusic: (
@@ -62,9 +64,9 @@ const payments = [
   { name: "namecheap domain", price: 120, currency: "TRY", type: "annual" },
 ];
 
-const Dashboard = () => {
+const Dashboard = ({ user }) => {
   return (
-    <Layout>
+    <Layout user={user}>
       <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
         <h3 className="text-3xl font-semibold">Recurring Payments</h3>
         <Button className="ml-auto">
