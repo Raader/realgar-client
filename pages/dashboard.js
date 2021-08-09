@@ -79,7 +79,13 @@ const Dashboard = ({ user }) => {
 
   return (
     <Layout user={user}>
-      <PaymentModal active={modal} close={() => setModal(false)}></PaymentModal>
+      <PaymentModal
+        active={modal}
+        close={() => setModal(false)}
+        onSubmit={(payment) => {
+          if (payment) payments.push(payment);
+        }}
+      ></PaymentModal>
       <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
         <h3 className="text-3xl font-semibold">Recurring Payments</h3>
         <Button className="ml-auto" onClick={() => setModal(true)}>

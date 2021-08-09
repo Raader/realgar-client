@@ -13,8 +13,9 @@ const PaymentForm = ({ onSubmit }) => {
   const [startingDate, setStartingDate] = useState("");
 
   const handleSubmit = () => {
-    post("/user/payments", { name, price: Number(price), type, startingDate });
-    onSubmit?.({ name, price: Number(price), type, startingDate });
+    post("/user/payments", { name, price: Number(price), type, startingDate })
+      .then((data) => onSubmit?.(data))
+      .catch(() => onSubmit?.());
   };
   return (
     <Form>
