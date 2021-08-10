@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const Dropdown = ({ children, content }) => {
+const Dropdown = ({ children, label }) => {
   const [active, setActive] = useState(false);
   const ref = useRef();
 
@@ -20,11 +20,11 @@ const Dropdown = ({ children, content }) => {
       onClick={() => setActive((prev) => !prev)}
       ref={ref}
     >
-      {children}
+      {label}
       <div>
         {active ? (
-          <div className="absolute bg-white min-w-xl rounded-md mt-1 shadow-lg w-full min-w-min overflow-hidden">
-            {content}
+          <div className="absolute bg-white min-w-xl rounded-md shadow-lg min-w-full overflow-hidden z-10 origin-top-right right-0 border">
+            {children}
           </div>
         ) : (
           <div></div>
