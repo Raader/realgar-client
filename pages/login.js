@@ -1,3 +1,4 @@
+import Brand from "../components/brand";
 import Button from "../components/button";
 import Card from "../components/card";
 import Form from "../components/form";
@@ -9,10 +10,13 @@ import PrimaryButton from "../components/primary_button";
 
 const Login = () => {
   return (
-    <Layout>
-      <div className="grid grid-cols-1 md:grid-cols-5 md:mt-10">
-        <div className="col-span-3 order-2 md:order-1">
+    <div className="lg:h-screen bg-gray-50 pb-8 lg:pb-0">
+      <div className="grid grid-cols-1 md:grid-cols-5 items-center max-w-4xl mx-auto py-10 px-4 h-5/6">
+        <div className="col-span-3">
           <Hero>
+            <div>
+              <Brand height={80} width={300}></Brand>
+            </div>
             <div className="max-w-md">
               <h1 className="text-3xl font-semibold mb-2">
                 Never let subscription services get out of hand again.{" "}
@@ -24,13 +28,13 @@ const Login = () => {
             </div>
           </Hero>
         </div>
-        <div className="md:w-96 col-span-2 xl:col-span-1 order-1 md:order-2">
+        <div className="md:w-96 col-span-2 xl:col-span-1">
           <Card>
             <LoginForm></LoginForm>
           </Card>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
