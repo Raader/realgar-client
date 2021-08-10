@@ -6,7 +6,7 @@ const Dropdown = ({ children, label }) => {
 
   useEffect(() => {
     const handler = (e) => {
-      if (ref && !ref.current.contains(e.target)) {
+      if (ref.current && !ref.current.contains(e.target)) {
         setActive(false);
       }
     };
@@ -21,15 +21,13 @@ const Dropdown = ({ children, label }) => {
       ref={ref}
     >
       {label}
-      <div>
-        {active ? (
-          <div className="absolute bg-white min-w-xl rounded-md shadow-lg min-w-full overflow-hidden z-10 origin-top-right right-0 border">
-            {children}
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+      {active ? (
+        <div className="absolute bg-white min-w-xl rounded-md shadow-lg min-w-full overflow-hidden z-10 origin-top-right right-0 border">
+          {children}
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

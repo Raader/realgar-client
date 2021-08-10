@@ -7,6 +7,7 @@ import {
 import Dropdown from "./dropdown";
 import Button from "./button";
 import ClearButton from "./clear_button";
+import PaymentDropdown from "./payment_dropdown";
 
 const Payment = ({ name, price, currency, className, icon, type }) => {
   return (
@@ -17,20 +18,7 @@ const Payment = ({ name, price, currency, className, icon, type }) => {
           {name}
         </p>
         <div className="ml-auto">
-          <Dropdown
-            label={
-              <Button className="bg-transparent hover:bg-gray-50 border-none px-1">
-                <DotsVerticalIcon className="w-5 h-5"></DotsVerticalIcon>
-              </Button>
-            }
-          >
-            <div>
-              <ClearButton>Edit</ClearButton>
-            </div>
-            <div>
-              <ClearButton>Delete</ClearButton>
-            </div>
-          </Dropdown>
+          <PaymentDropdown></PaymentDropdown>
         </div>
       </div>
 

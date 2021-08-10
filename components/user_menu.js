@@ -4,6 +4,8 @@ import Dropdown from "./dropdown";
 import NavLink from "./nav_link";
 import Button from "./button";
 import { LogoutIcon } from "@heroicons/react/solid";
+import ClearButton from "./clear_button";
+import IconText from "./icon_text";
 
 const UserMenu = ({ user }) => {
   return (
@@ -17,12 +19,11 @@ const UserMenu = ({ user }) => {
         </NavLink>
       }
     >
-      <div>
-        <div className="flex flex-row items-center space-x-1 hover:bg-gray-50 p-2 cursor-pointer">
-          <LogoutIcon className="h-5 w-5"></LogoutIcon>
-          <div>Logout</div>
-        </div>
-      </div>
+      <ClearButton>
+        <IconText icon={<LogoutIcon className="h-5 w-5"></LogoutIcon>}>
+          Logout
+        </IconText>
+      </ClearButton>
     </Dropdown>
   );
 };
