@@ -1,7 +1,12 @@
-import { DotsVerticalIcon } from "@heroicons/react/solid";
+import {
+  DotsVerticalIcon,
+  PencilAltIcon,
+  TrashIcon,
+} from "@heroicons/react/solid";
 import { remove } from "../lib/api";
 import ClearButton from "./clear_button";
 import Dropdown from "./dropdown";
+import IconText from "./icon_text";
 
 const PaymentDropdown = ({ payment, onDelete }) => {
   const deletePayment = () => {
@@ -18,8 +23,16 @@ const PaymentDropdown = ({ payment, onDelete }) => {
         </ClearButton>
       }
     >
-      <ClearButton>Edit</ClearButton>
-      <ClearButton onClick={deletePayment}>Delete</ClearButton>
+      <ClearButton>
+        <IconText icon={<PencilAltIcon className="h-5 w-5"></PencilAltIcon>}>
+          Edit
+        </IconText>
+      </ClearButton>
+      <ClearButton onClick={deletePayment}>
+        <IconText icon={<TrashIcon className="h-5 w-5"></TrashIcon>}>
+          Delete
+        </IconText>
+      </ClearButton>
     </Dropdown>
   );
 };

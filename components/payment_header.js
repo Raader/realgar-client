@@ -1,6 +1,6 @@
 import PaymentDropdown from "./payment_dropdown";
 
-const PaymentHeader = ({ icon, payment, onDelete }) => {
+const PaymentHeader = ({ icon, payment, children }) => {
   return (
     <div className="flex items-center">
       {icon}
@@ -8,12 +8,7 @@ const PaymentHeader = ({ icon, payment, onDelete }) => {
         <p className="text-lg text-gray-600 whitespace-nowrap ml-2 truncate col-span-3">
           {payment?.name}
         </p>
-        <div className="ml-auto">
-          <PaymentDropdown
-            payment={payment}
-            onDelete={onDelete}
-          ></PaymentDropdown>
-        </div>
+        <div className="ml-auto">{children}</div>
       </div>
     </div>
   );
