@@ -34,39 +34,6 @@ const icons = {
   ),
 };
 
-const examplePayments = [
-  {
-    name: "Netflix subscription",
-    price: "26,99",
-    currency: "TRY",
-    type: "monthly",
-    icon: "netflix",
-  },
-  {
-    name: "Apple Music subscription",
-    price: "13,99",
-    currency: "TRY",
-    type: "monthly",
-    icon: "appleMusic",
-  },
-  {
-    name: "Amazon prime video subscription",
-    price: 25,
-    currency: "TRY",
-    type: "monthly",
-  },
-
-  {
-    name: "Spotify subscription",
-    price: "15,00",
-    currency: "TRY",
-    type: "monthly",
-    icon: "spotify",
-  },
-
-  { name: "namecheap domain", price: 120, currency: "TRY", type: "annual" },
-];
-
 const Dashboard = ({ user }) => {
   const [modal, setModal] = useState({
     header: "Add a payment",
@@ -81,6 +48,26 @@ const Dashboard = ({ user }) => {
       .catch();
   }, []);
 
+  const editPayment = (payment, edit) => {
+    patch("/user/payments/" + payment?.id, edit)
+      .then((editedPayment) =>
+        setPayments((prev) =>
+          prev.map((val) => {
+            return val.id.valueOf() === editedPayment.id.valueOf()
+              ? editedPayment
+              : val;
+          })
+        )
+      )
+      .catch((err) => console.error(err));
+  };
+
+  const addPayment = (payment) => {
+    post("/user/payments", payment)
+      .then((data) => setPayments((prev) => [...prev, data]))
+      .catch((err) => console.error(err));
+  };
+
   return (
     <Layout user={user}>
       <Modal
@@ -92,24 +79,11 @@ const Dashboard = ({ user }) => {
           {...modal?.payment}
           onSubmit={(payment) => {
             if (modal?.payment?.id) {
-              patch("/user/payments/" + modal?.payment?.id, payment)
-                .then((data) =>
-                  setPayments((prev) =>
-                    prev.map((val) => {
-                      return val.id.valueOf() === data.id.valueOf()
-                        ? data
-                        : val;
-                    })
-                  )
-                )
-                .catch((err) => console.error(err));
-              setModal({ payment: {}, active: false });
-              return;
+              editPayment(modal?.payment, payment);
+            } else {
+              addPayment(payment);
             }
             setModal({ payment: {}, active: false });
-            post("/user/payments", payment)
-              .then((data) => setPayments((prev) => [...prev, data]))
-              .catch((err) => console.error(err));
           }}
         ></PaymentForm>
       </Modal>
