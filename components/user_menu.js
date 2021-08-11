@@ -6,8 +6,11 @@ import Button from "./button";
 import { LogoutIcon } from "@heroicons/react/solid";
 import ClearButton from "./clear_button";
 import IconText from "./icon_text";
+import { useRouter } from "next/dist/client/router";
+import { remove } from "../lib/api";
 
 const UserMenu = ({ user }) => {
+  const router = useRouter();
   return (
     <Dropdown
       label={
@@ -19,7 +22,11 @@ const UserMenu = ({ user }) => {
         </NavLink>
       }
     >
-      <ClearButton>
+      <ClearButton
+        onClick={() => {
+          remove("/session").then(() => router.push("/"));
+        }}
+      >
         <IconText icon={<LogoutIcon className="h-5 w-5"></LogoutIcon>}>
           Logout
         </IconText>
