@@ -7,10 +7,14 @@ import "../styles/global.css";
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
   useEffect(() => {
+    if (user) return;
     get("/user")
       .then((user) => setUser(user))
-      .catch();
-  }, []);
+      .catch((err) => {
+        if (err.response?.status === 401) return;
+        throw new Error(err);
+      });
+  }, [Component, user]);
   return (
     <>
       <Head>
