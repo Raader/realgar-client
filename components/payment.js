@@ -11,13 +11,14 @@ import PaymentDropdown from "./payment_dropdown";
 import IconText from "./icon_text";
 import PaymentHeader from "./payment_header";
 
-const Payment = ({ payment, className, icon, onDelete }) => {
+const Payment = ({ payment, className, icon, onDelete, onEdit }) => {
   return (
     <Card className={"grid grid-rows-2 p-4 gap-2 rounded-lg" + " " + className}>
       <PaymentHeader icon={icon} payment={payment} onDelete={onDelete}>
         <PaymentDropdown
           payment={payment}
           onDelete={onDelete}
+          onEdit={onEdit}
         ></PaymentDropdown>
       </PaymentHeader>
       <div className="text-4xl flex flex-row items-baseline font-extrabold space-x-2 text-gray-700">

@@ -3,18 +3,15 @@ import {
   PencilAltIcon,
   TrashIcon,
 } from "@heroicons/react/solid";
-import { remove } from "../lib/api";
+import { useState } from "react";
+import { patch, remove } from "../lib/api";
 import ClearButton from "./clear_button";
 import Dropdown from "./dropdown";
 import IconText from "./icon_text";
+import Modal from "./modal";
+import PaymentForm from "./payment_form";
 
-const PaymentDropdown = ({ payment, onDelete }) => {
-  const deletePayment = () => {
-    remove("/user/payments/" + payment?.id)
-      .then(() => onDelete?.())
-      .catch();
-  };
-
+const PaymentDropdown = ({ onDelete, onEdit }) => {
   return (
     <Dropdown
       label={
@@ -23,12 +20,12 @@ const PaymentDropdown = ({ payment, onDelete }) => {
         </ClearButton>
       }
     >
-      <ClearButton>
+      <ClearButton onClick={onEdit}>
         <IconText icon={<PencilAltIcon className="h-5 w-5"></PencilAltIcon>}>
           Edit
         </IconText>
       </ClearButton>
-      <ClearButton onClick={deletePayment}>
+      <ClearButton onClick={onDelete}>
         <IconText icon={<TrashIcon className="h-5 w-5"></TrashIcon>}>
           Delete
         </IconText>

@@ -9,7 +9,7 @@ import Modal from "../components/modal";
 import PaymentForm from "../components/payment_form";
 import { useEffect, useState } from "react";
 import PaymentModal from "../components/payment_modal";
-import { get } from "../lib/api";
+import { get, patch, post, remove } from "../lib/api";
 
 const icons = {
   appleMusic: (
@@ -68,7 +68,11 @@ const examplePayments = [
 ];
 
 const Dashboard = ({ user }) => {
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState({
+    header: "Add a payment",
+    payment: {},
+    active: false,
+  });
   const [payments, setPayments] = useState([]);
 
   useEffect(() => {
@@ -79,16 +83,44 @@ const Dashboard = ({ user }) => {
 
   return (
     <Layout user={user}>
-      <PaymentModal
-        active={modal}
-        close={() => setModal(false)}
-        onSubmit={(payment) => {
-          if (payment) setPayments((prev) => [...prev, payment]);
-        }}
-      ></PaymentModal>
+      <Modal
+        header={modal?.header}
+        active={modal?.active}
+        close={(prev) => setModal({ ...prev, active: false })}
+      >
+        <PaymentForm
+          {...modal?.payment}
+          onSubmit={(payment) => {
+            if (modal?.payment?.id) {
+              patch("/user/payments/" + modal?.payment?.id, payment)
+                .then((data) =>
+                  setPayments((prev) =>
+                    prev.map((val) => {
+                      return val.id.valueOf() === data.id.valueOf()
+                        ? data
+                        : val;
+                    })
+                  )
+                )
+                .catch((err) => console.error(err));
+              setModal({ payment: {}, active: false });
+              return;
+            }
+            setModal({ payment: {}, active: false });
+            post("/user/payments", payment)
+              .then((data) => setPayments((prev) => [...prev, data]))
+              .catch((err) => console.error(err));
+          }}
+        ></PaymentForm>
+      </Modal>
       <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
         <h3 className="text-3xl font-semibold">Recurring Payments</h3>
-        <Button className="ml-auto" onClick={() => setModal(true)}>
+        <Button
+          className="ml-auto"
+          onClick={() =>
+            setModal({ payment: {}, header: "Add a payment", active: true })
+          }
+        >
           <PlusIcon className="w-5 h-5"></PlusIcon>
         </Button>
       </div>
@@ -100,7 +132,18 @@ const Dashboard = ({ user }) => {
             className=""
             icon={icons[payment.icon] || icons.default}
             onDelete={() =>
-              setPayments((prev) => prev.filter((val) => val.id !== payment.id))
+              remove("/user/payments/" + payment.id).then(() =>
+                setPayments((prev) =>
+                  prev.filter((val) => val.id !== payment.id)
+                )
+              )
+            }
+            onEdit={() =>
+              setModal(() => ({
+                active: true,
+                payment,
+                header: "Edit the payment",
+              }))
             }
           ></Payment>
         ))}

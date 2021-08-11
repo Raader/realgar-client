@@ -6,17 +6,16 @@ import Label from "./label";
 import PrimaryButton from "./primary_button";
 import RadioInput from "./radio_input";
 
-const PaymentForm = ({ onSubmit }) => {
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [type, setType] = useState("");
-  const [startingDate, setStartingDate] = useState("");
+const PaymentForm = ({ onSubmit, ...props }) => {
+  const [name, setName] = useState(props.name || "");
+  const [price, setPrice] = useState(props.price || "");
+  const [type, setType] = useState(props.type || "");
+  const [startingDate, setStartingDate] = useState(props.startingDate || "");
 
   const handleSubmit = () => {
-    post("/user/payments", { name, price: Number(price), type, startingDate })
-      .then((data) => onSubmit?.(data))
-      .catch(() => onSubmit?.());
+    onSubmit?.({ name, price: Number(price), type, startingDate });
   };
+
   return (
     <Form>
       <Label forId="name">Subscription Name</Label>
