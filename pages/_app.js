@@ -12,7 +12,6 @@ function MyApp({ Component, pageProps }) {
       .then((user) => setUser(user))
       .catch((err) => {
         if (err.response?.status === 401) return;
-        throw new Error(err);
       });
   }, [Component, user]);
   return (

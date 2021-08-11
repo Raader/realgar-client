@@ -23,7 +23,7 @@ const Payment = ({ payment, className, icon, onDelete }) => {
       <div className="text-4xl flex flex-row items-baseline font-extrabold space-x-2 text-gray-700">
         <div>{payment?.price}</div>
         <div className="text-xs font-semibold text-gray-500">
-          {payment?.currency}
+          {payment?.currency || "TRY"}
           <span className=""> / {payment?.type}</span>
         </div>
       </div>
