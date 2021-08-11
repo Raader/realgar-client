@@ -1,6 +1,6 @@
 import Button from "./button";
 
-const ClearButton = ({ className, children, props }) => {
+const ClearButton = ({ className, children, ...props }) => {
   return (
     <Button
       className={
@@ -8,6 +8,7 @@ const ClearButton = ({ className, children, props }) => {
         " " +
         className
       }
+      {...props}
     >
       {children}
     </Button>

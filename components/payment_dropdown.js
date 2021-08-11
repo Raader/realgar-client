@@ -1,8 +1,15 @@
 import { DotsVerticalIcon } from "@heroicons/react/solid";
+import { remove } from "../lib/api";
 import ClearButton from "./clear_button";
 import Dropdown from "./dropdown";
 
-const PaymentDropdown = () => {
+const PaymentDropdown = ({ payment, onDelete }) => {
+  const deletePayment = () => {
+    remove("/user/payments/" + payment?.id)
+      .then(() => onDelete?.())
+      .catch();
+  };
+
   return (
     <Dropdown
       label={
@@ -12,7 +19,7 @@ const PaymentDropdown = () => {
       }
     >
       <ClearButton>Edit</ClearButton>
-      <ClearButton>Delete</ClearButton>
+      <ClearButton onClick={deletePayment}>Delete</ClearButton>
     </Dropdown>
   );
 };

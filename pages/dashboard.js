@@ -83,7 +83,7 @@ const Dashboard = ({ user }) => {
         active={modal}
         close={() => setModal(false)}
         onSubmit={(payment) => {
-          if (payment) payments.push(payment);
+          if (payment) setPayments((prev) => [...prev, payment]);
         }}
       ></PaymentModal>
       <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
@@ -95,10 +95,13 @@ const Dashboard = ({ user }) => {
       <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
         {payments.map((payment) => (
           <Payment
-            {...payment}
+            payment={payment}
             key={payment.id}
             className=""
             icon={icons[payment.icon] || icons.default}
+            onDelete={() =>
+              setPayments((prev) => prev.filter((val) => val.id !== payment.id))
+            }
           ></Payment>
         ))}
       </div>
