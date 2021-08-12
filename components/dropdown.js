@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const Dropdown = ({ children, label }) => {
+const Dropdown = ({ children, label, className }) => {
   const [active, setActive] = useState(false);
   const ref = useRef();
 
@@ -22,7 +22,13 @@ const Dropdown = ({ children, label }) => {
     >
       {label}
       {active ? (
-        <div className="absolute bg-white min-w-xl rounded-md shadow-lg min-w-full overflow-hidden z-10 origin-top-right right-0 border">
+        <div
+          className={
+            "absolute bg-white min-w-xl rounded-md shadow-lg min-w-full overflow-hidden z-10 origin-top-right right-0 border" +
+            " " +
+            className
+          }
+        >
           {children}
         </div>
       ) : (
