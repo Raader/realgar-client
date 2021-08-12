@@ -10,7 +10,11 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   const [name, setName] = useState(props.name || "");
   const [price, setPrice] = useState(props.price || "");
   const [type, setType] = useState(props.type || "");
-  const [startingDate, setStartingDate] = useState(props.startingDate || "");
+  const [startingDate, setStartingDate] = useState(
+    props.startingDate
+      ? new Date(props.startingDate).toISOString().split("T")[0]
+      : ""
+  );
 
   const handleSubmit = () => {
     onSubmit?.({ name, price: Number(price), type, startingDate });
