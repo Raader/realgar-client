@@ -15,7 +15,7 @@ const UserMenu = ({ user }) => {
     <Dropdown
       label={
         <NavLink
-          icon={<Avatar className="-mr-1"></Avatar>}
+          icon={<Avatar className="-mr-1 lg:mr-0"></Avatar>}
           className="hover:text-gray-800 p-0 bg-transparent"
         >
           <div className="flex items-center lg:space-x-1">
