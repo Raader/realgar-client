@@ -41,7 +41,8 @@ const LoginForm = () => {
         </a>
       </Button>
       <div className="text-gray-400 m-2">
-        Don't have an account? <a className="text-green-300">Sign up here</a>
+        Don&#39;t have an account?{" "}
+        <a className="text-green-300">Sign up here</a>
       </div>
     </Form>
   );
