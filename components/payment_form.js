@@ -6,7 +6,7 @@ import Label from "./label";
 import PrimaryButton from "./primary_button";
 import RadioInput from "./radio_input";
 
-const PaymentForm = ({ onSubmit, ...props }) => {
+const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   const [name, setName] = useState(props.name || "");
   const [price, setPrice] = useState(props.price || "");
   const [type, setType] = useState(props.type || "");
@@ -57,7 +57,7 @@ const PaymentForm = ({ onSubmit, ...props }) => {
         onChange={(e) => setStartingDate(e.target.value)}
       ></Input>
       <PrimaryButton type="submit" onClick={handleSubmit}>
-        Add
+        {submitText || "add"}
       </PrimaryButton>
     </Form>
   );

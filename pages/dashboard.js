@@ -77,6 +77,7 @@ const Dashboard = ({ user }) => {
       >
         <PaymentForm
           {...modal?.payment}
+          submitText={modal?.payment?.id ? "Update" : "Add"}
           onSubmit={(payment) => {
             if (modal?.payment?.id) {
               editPayment(modal?.payment, payment);
