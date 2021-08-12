@@ -6,8 +6,14 @@ import Image from "next/image";
 import GoogleIcon from "./icons/google_icon";
 import GithubIcon from "./icons/github_icon";
 import AppleIcon from "./icons/apple_icon";
+import { useEffect, useState } from "react";
+import { get } from "../lib/api";
 
 const LoginForm = () => {
+  const [githubURL, setGithubURL] = useState("");
+  useEffect(() => {
+    get("/oauth/github").then((url) => setGithubURL(url));
+  }, []);
   return (
     <Form className="text-center">
       <h2 className="text-2xl font-semibold m-4">Sign in to your Account</h2>
@@ -33,7 +39,7 @@ const LoginForm = () => {
       </Button>
       <Button block className=" bg-purple-600 hover:bg-purple-700 text-white">
         <a
-          href="https://github.com/login/oauth/authorize?client_id=ed935c9cbedbb8b0fa6d&scope=user:email"
+          href={githubURL}
           className="flex flex-row items-center space-x-2 text-center"
         >
           <GithubIcon className="w-5 h-5 inline-block"></GithubIcon>
