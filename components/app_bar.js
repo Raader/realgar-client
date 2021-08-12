@@ -15,6 +15,12 @@ import UserMenu from "./user_menu";
 const AppBar = ({ user }) => {
   return (
     <Navbar>
+      <div className="lg:hidden mr-auto">
+        <MenuDropdown user={user}>
+          <MenuIcon className="h-6 w-6"></MenuIcon>
+        </MenuDropdown>
+      </div>
+
       <Brand></Brand>
       <NavbarStart>
         <NavLink icon={<HomeIcon className="h-5 w-5"></HomeIcon>} href="/">
@@ -49,10 +55,9 @@ const AppBar = ({ user }) => {
           </>
         )}
       </NavbarEnd>
-      <div className="lg:hidden ml-auto">
-        <MenuDropdown>
-          <MenuIcon className="h-6 w-6"></MenuIcon>
-        </MenuDropdown>
+
+      <div className="ml-auto lg:hidden">
+        {user ? <UserMenu user={user}></UserMenu> : <></>}
       </div>
     </Navbar>
   );
