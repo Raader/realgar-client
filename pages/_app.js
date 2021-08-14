@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import "tailwindcss/tailwind.css";
 import { get } from "../lib/api";
 import "../styles/global.css";
+import "animate.css";
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();

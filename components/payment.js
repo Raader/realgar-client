@@ -13,7 +13,13 @@ import PaymentHeader from "./payment_header";
 
 const Payment = ({ payment, className, icon, onDelete, onEdit }) => {
   return (
-    <Card className={"grid grid-rows-2 p-4 gap-2 rounded-lg" + " " + className}>
+    <Card
+      className={
+        "grid grid-rows-2 p-4 gap-2 rounded-lg animate__animated animate__bounceInRight" +
+        " " +
+        className
+      }
+    >
       <PaymentHeader icon={icon} payment={payment} onDelete={onDelete}>
         <PaymentDropdown
           payment={payment}
