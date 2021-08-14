@@ -44,7 +44,14 @@ const Dashboard = ({ user }) => {
 
   useEffect(() => {
     get("/user/payments")
-      .then((data) => setPayments(data))
+      .then((data) => {
+        const interval = 75;
+        let delay = 0;
+        for (let payment of data) {
+          setTimeout(() => setPayments((prev) => [...prev, payment]), delay);
+          delay += interval;
+        }
+      })
       .catch();
   }, []);
 
