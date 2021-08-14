@@ -43,17 +43,36 @@ const Dashboard = ({ user }) => {
   const [payments, setPayments] = useState([]);
 
   useEffect(() => {
-    get("/user/payments")
-      .then((data) => {
-        const interval = 75;
-        let delay = 0;
-        for (let payment of data) {
-          setTimeout(() => setPayments((prev) => [...prev, payment]), delay);
-          delay += interval;
-        }
-      })
-      .catch();
-  }, []);
+    if (payments.length <= 0) {
+      get("/user/payments")
+        .then((data) => {
+          const interval = 75;
+          let delay = 0;
+          for (let payment of data) {
+            setTimeout(() => setPayments((prev) => [...prev, payment]), delay);
+            delay += interval;
+          }
+        })
+        .catch();
+    }
+  }, [payments]);
+
+  const deletePayment = (payment) => {
+    remove("/user/payments/" + payment.id).then(() => {
+      setPayments((prev) =>
+        prev.map((val) =>
+          val.id.valueOf() === payment.id.valueOf()
+            ? { ...val, deleted: true }
+            : val
+        )
+      );
+      setTimeout(
+        () =>
+          setPayments((prev) => prev.filter((val) => val.id !== payment.id)),
+        300
+      );
+    });
+  };
 
   const editPayment = (payment, edit) => {
     patch("/user/payments/" + payment?.id, edit)
@@ -111,15 +130,11 @@ const Dashboard = ({ user }) => {
           <Payment
             payment={payment}
             key={payment.id}
-            className=""
-            icon={icons[payment.icon] || icons.default}
-            onDelete={() =>
-              remove("/user/payments/" + payment.id).then(() =>
-                setPayments((prev) =>
-                  prev.filter((val) => val.id !== payment.id)
-                )
-              )
+            className={
+              payment.deleted ? "animate__fadeOut animate__faster" : ""
             }
+            icon={icons[payment.icon] || icons.default}
+            onDelete={() => deletePayment(payment)}
             onEdit={() =>
               setModal(() => ({
                 active: true,
