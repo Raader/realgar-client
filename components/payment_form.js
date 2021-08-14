@@ -9,6 +9,7 @@ import RadioInput from "./radio_input";
 const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   const [name, setName] = useState(props.name || "");
   const [price, setPrice] = useState(props.price || "");
+  const [currency, setCurrency] = useState(props.currency || "USD");
   const [type, setType] = useState(props.type || "");
   const [startingDate, setStartingDate] = useState(
     props.startingDate
@@ -17,7 +18,7 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   );
 
   const handleSubmit = () => {
-    onSubmit?.({ name, price: Number(price), type, startingDate });
+    onSubmit?.({ name, price: Number(price), type, startingDate, currency });
   };
 
   return (
@@ -35,6 +36,12 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
         id="price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
+      ></Input>
+      <Label forId="currency">Currency</Label>
+      <Input
+        id="currency"
+        value={currency}
+        onChange={(e) => setCurrency(e.target.value.toUpperCase())}
       ></Input>
       <Label>Subscription Type</Label>
       <div className="flex flex-row space-x-4">
