@@ -1,4 +1,4 @@
-const Button = ({ children, onClick, block, className, type }) => {
+const Button = ({ children, onClick, block, className, type, ...props }) => {
   return (
     <button
       onClick={onClick}
@@ -8,6 +8,7 @@ const Button = ({ children, onClick, block, className, type }) => {
           block ? "block w-full" : ""
         } ` + className
       }
+      {...props}
     >
       {children}
     </button>

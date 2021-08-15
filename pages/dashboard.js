@@ -78,56 +78,59 @@ const Dashboard = ({ user }) => {
 
   return (
     <Layout user={user}>
-      <Modal
-        header={modal?.header}
-        active={modal?.active}
-        close={(prev) => setModal({ ...prev, active: false })}
-      >
-        <PaymentForm
-          {...modal?.payment}
-          submitText={modal?.payment?.id ? "Update" : "Add"}
-          onSubmit={(payment) => {
-            if (modal?.payment?.id) {
-              editPayment(modal?.payment, payment);
-            } else {
-              addPayment(payment);
-            }
-            setModal({ payment: {}, active: false });
-          }}
-        ></PaymentForm>
-      </Modal>
-      <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
-        <h3 className="text-3xl font-semibold">Recurring Payments</h3>
-        <Button className="ml-auto hidden lg:block" onClick={openCreateModal}>
-          <PlusIcon className="w-5 h-5"></PlusIcon>
-        </Button>
+      <div className="pb-20">
+        <Modal
+          header={modal?.header}
+          active={modal?.active}
+          close={(prev) => setModal({ ...prev, active: false })}
+        >
+          <PaymentForm
+            {...modal?.payment}
+            submitText={modal?.payment?.id ? "Update" : "Add"}
+            onSubmit={(payment) => {
+              if (modal?.payment?.id) {
+                editPayment(modal?.payment, payment);
+              } else {
+                addPayment(payment);
+              }
+              setModal({ payment: {}, active: false });
+            }}
+          ></PaymentForm>
+        </Modal>
+        <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
+          <h3 className="text-3xl font-semibold">Recurring Payments</h3>
+          <Button className="ml-auto hidden lg:block" onClick={openCreateModal}>
+            <PlusIcon className="w-5 h-5"></PlusIcon>
+          </Button>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+          {payments.map((payment) => (
+            <Payment
+              payment={payment}
+              key={payment.id}
+              className={
+                payment.deleted ? "animate__fadeOut animate__faster" : ""
+              }
+              icon={brandIcons[payment.icon] || brandIcons.default}
+              onDelete={() => deletePayment(payment)}
+              onEdit={() =>
+                setModal(() => ({
+                  active: true,
+                  payment,
+                  header: "Edit the payment",
+                }))
+              }
+            ></Payment>
+          ))}
+        </div>
+        <PrimaryButton
+          className="fixed right-5 bottom-5 shadow-md lg:hidden"
+          style={{ borderRadius: "9999px", padding: "0.75rem" }}
+          onClick={openCreateModal}
+        >
+          <PlusIcon className="w-6 h-6"></PlusIcon>
+        </PrimaryButton>
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        {payments.map((payment) => (
-          <Payment
-            payment={payment}
-            key={payment.id}
-            className={
-              payment.deleted ? "animate__fadeOut animate__faster" : ""
-            }
-            icon={brandIcons[payment.icon] || brandIcons.default}
-            onDelete={() => deletePayment(payment)}
-            onEdit={() =>
-              setModal(() => ({
-                active: true,
-                payment,
-                header: "Edit the payment",
-              }))
-            }
-          ></Payment>
-        ))}
-      </div>
-      <PrimaryButton
-        className="fixed right-5 bottom-5 rounded-full px-4 py-4 shadow-md lg:hidden"
-        onClick={openCreateModal}
-      >
-        <PlusIcon className="w-6 h-6"></PlusIcon>
-      </PrimaryButton>
     </Layout>
   );
 };
