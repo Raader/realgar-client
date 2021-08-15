@@ -73,7 +73,7 @@ const NavLinks = () => {
 const AppBar = ({ user }) => {
   const [drop, setDrop] = useState(false);
   return (
-    <>
+    <div className="sticky top-0 z-10">
       <Navbar>
         <div className="lg:hidden mr-auto cursor-pointer">
           <MenuButton onClick={() => setDrop((prev) => !prev)}></MenuButton>
@@ -105,7 +105,7 @@ const AppBar = ({ user }) => {
       <NavbarDrop open={drop}>
         <NavLinks></NavLinks>
       </NavbarDrop>
-    </>
+    </div>
   );
 };
 
