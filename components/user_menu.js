@@ -14,15 +14,14 @@ const UserMenu = ({ user }) => {
   return (
     <Dropdown
       label={
-        <NavLink
-          icon={<Avatar className="-mr-1 sm:mr-0"></Avatar>}
-          className="hover:text-gray-800 p-0 bg-transparent"
-        >
-          <div className="flex items-center lg:space-x-1">
-            <div className="hidden sm:block">{user?.username}</div>
-            <ChevronDownIcon className="h-5 w-5 hidden sm:block"></ChevronDownIcon>
-          </div>
-        </NavLink>
+        <div className="hover:bg-opacity-10 hover:bg-gray-400 hover:text-gray-800 text-gray-600 py-2 px-4 font-bold flex flex-row items-center transition duration-200 rounded-md cursor-pointer">
+          <IconText icon={<Avatar className="-mr-1 sm:mr-0"></Avatar>}>
+            <div className="flex items-center lg:space-x-1">
+              <div className="hidden sm:block">{user?.username}</div>
+              <ChevronDownIcon className="h-5 w-5 hidden sm:block"></ChevronDownIcon>
+            </div>
+          </IconText>
+        </div>
       }
     >
       <ClearButton
