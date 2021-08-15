@@ -1,8 +1,18 @@
-const NavbarDrop = ({ children, open }) => {
+import { Children } from "react";
+
+const NavbarDrop = ({ children, open, extended }) => {
   return (
     <div
       className="w-full bg-white overflow-hidden transition-all duration-500 lg:hidden border-b"
-      style={open ? { maxHeight: "150px" } : { maxHeight: "0px" }}
+      style={
+        open
+          ? {
+              maxHeight: `${
+                (Children.count(children) + extended + 1) * 40 + 5
+              }px`,
+            }
+          : { maxHeight: "0px" }
+      }
     >
       {children}
     </div>

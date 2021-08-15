@@ -102,8 +102,20 @@ const AppBar = ({ user }) => {
           {user ? <UserMenu user={user}></UserMenu> : <></>}
         </div>
       </Navbar>
-      <NavbarDrop open={drop}>
+      <NavbarDrop open={drop} extended={user ? 0 : 2}>
         <NavLinks></NavLinks>
+        {!user ? (
+          <>
+            <div>
+              <NavLink href="/login">Login</NavLink>
+            </div>
+            <div>
+              <NavLink href="/register">Sign Up</NavLink>
+            </div>
+          </>
+        ) : (
+          <></>
+        )}
       </NavbarDrop>
     </div>
   );
