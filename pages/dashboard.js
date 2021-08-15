@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import PaymentModal from "../components/payment_modal";
 import { get, patch, post, remove } from "../lib/api";
 import brandIcons from "../components/icons/brand_icons";
+import PrimaryButton from "../components/primary_button";
 
 const Dashboard = ({ user }) => {
   const [modal, setModal] = useState({
@@ -72,6 +73,9 @@ const Dashboard = ({ user }) => {
       .catch((err) => console.error(err));
   };
 
+  const openCreateModal = () =>
+    setModal({ payment: {}, header: "Add a payment", active: true });
+
   return (
     <Layout user={user}>
       <Modal
@@ -94,12 +98,7 @@ const Dashboard = ({ user }) => {
       </Modal>
       <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
         <h3 className="text-3xl font-semibold">Recurring Payments</h3>
-        <Button
-          className="ml-auto"
-          onClick={() =>
-            setModal({ payment: {}, header: "Add a payment", active: true })
-          }
-        >
+        <Button className="ml-auto hidden lg:block" onClick={openCreateModal}>
           <PlusIcon className="w-5 h-5"></PlusIcon>
         </Button>
       </div>
@@ -123,6 +122,12 @@ const Dashboard = ({ user }) => {
           ></Payment>
         ))}
       </div>
+      <PrimaryButton
+        className="fixed right-5 bottom-5 rounded-full px-4 py-4 shadow-md"
+        onClick={openCreateModal}
+      >
+        <PlusIcon className="w-6 h-6"></PlusIcon>
+      </PrimaryButton>
     </Layout>
   );
 };
