@@ -46,7 +46,7 @@ const Payment = ({ payment, className, icon, onDelete, onEdit }) => {
             onEdit={onEdit}
           ></PaymentDropdown>
         </PaymentHeader>
-        <div className="text-4xl flex flex-row items-baseline font-extrabold space-x-2 text-gray-700 overflow-x-auto">
+        <div className="text-4xl flex flex-row items-baseline font-extrabold space-x-2 text-gray-700 overflow-x-auto overflow-y-hidden">
           <div>{payment?.price}</div>
           <div className="text-xs font-semibold text-gray-500 whitespace-nowrap">
             {payment?.currency || "TRY"}

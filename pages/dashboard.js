@@ -123,7 +123,7 @@ const Dashboard = ({ user }) => {
         ))}
       </div>
       <PrimaryButton
-        className="fixed right-5 bottom-5 rounded-full px-4 py-4 shadow-md"
+        className="fixed right-5 bottom-5 rounded-full px-4 py-4 shadow-md lg:hidden"
         onClick={openCreateModal}
       >
         <PlusIcon className="w-6 h-6"></PlusIcon>
