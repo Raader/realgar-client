@@ -7,13 +7,13 @@ const Modal = ({ children, active, header, close }) => {
   if (!active) return <></>;
   return (
     <div
-      className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-30 z-10 flex lg:justify-center items-center lg:overflow-auto"
+      className="fixed top-0 left-0 w-screen h-screen bg-gray-900 bg-opacity-30 z-10 flex lg:justify-center items-center lg:overflow-auto animate__animated animate__fadeIn animate__faster"
       onClick={(e) => {
         if (ref.current && !ref.current?.contains(e.target)) close();
       }}
     >
       <div
-        className="w-full lg:1/2 lg:max-w-lg h-screen lg:h-auto bg-gray-100 mx-auto lg:rounded-xl lg:bg-white lg:p-4 overflow-auto"
+        className="w-full lg:1/2 lg:max-w-lg h-screen lg:h-auto bg-gray-100 mx-auto lg:rounded-xl lg:bg-white lg:p-4 overflow-auto animate__animated animate__slideInDown animate__fast"
         ref={ref}
       >
         <div className="flex items-center mb-2 bg-white p-4 lg:mb-0 lg:border-b lg:p-2">
