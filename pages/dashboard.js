@@ -10,29 +10,7 @@ import PaymentForm from "../components/payment_form";
 import { useEffect, useState } from "react";
 import PaymentModal from "../components/payment_modal";
 import { get, patch, post, remove } from "../lib/api";
-
-const icons = {
-  appleMusic: (
-    <div className="bg-gray-100 rounded-xl p-2">
-      <AppleMusicIcon className="w-6 h-6 text-red-400"></AppleMusicIcon>
-    </div>
-  ),
-  netflix: (
-    <div className="bg-black rounded-xl p-2">
-      <NetflixIcon className="w-6 h-6 text-red-600"></NetflixIcon>
-    </div>
-  ),
-  spotify: (
-    <div className="bg-green-400 rounded-xl p-2">
-      <SpotifyIcon className="w-6 h-6 text-white"></SpotifyIcon>
-    </div>
-  ),
-  default: (
-    <div className="bg-gray-300 rounded-xl p-2">
-      <CashIcon className="w-6 h-6 text-gray-100"></CashIcon>
-    </div>
-  ),
-};
+import brandIcons from "../components/icons/brand_icons";
 
 const Dashboard = ({ user }) => {
   const [modal, setModal] = useState({
@@ -133,7 +111,7 @@ const Dashboard = ({ user }) => {
             className={
               payment.deleted ? "animate__fadeOut animate__faster" : ""
             }
-            icon={icons[payment.icon] || icons.default}
+            icon={brandIcons[payment.icon] || brandIcons.default}
             onDelete={() => deletePayment(payment)}
             onEdit={() =>
               setModal(() => ({

@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { post } from "../lib/api";
 import Form from "./form";
+import brandIcons from "./icons/brand_icons";
 import Input from "./input";
 import Label from "./label";
 import PrimaryButton from "./primary_button";
 import RadioInput from "./radio_input";
+import SelectInput from "./select_input";
 
 const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   const [name, setName] = useState(props.name || "");
@@ -16,9 +18,17 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
       ? new Date(props.startingDate).toISOString().split("T")[0]
       : ""
   );
+  const [icon, setIcon] = useState(props.icon || "");
 
   const handleSubmit = () => {
-    onSubmit?.({ name, price: Number(price), type, startingDate, currency });
+    onSubmit?.({
+      name,
+      price: Number(price),
+      type,
+      startingDate,
+      currency,
+      icon,
+    });
   };
 
   return (
@@ -60,6 +70,15 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
           Annual
         </RadioInput>
       </div>
+      <Label>Icon</Label>
+      <SelectInput
+        options={Object.entries(brandIcons).map(([key, value]) => ({
+          label: value,
+          value: key,
+        }))}
+        onChange={(val) => setIcon(val)}
+        value={icon}
+      ></SelectInput>
       <Label forId="startingDate">Starting Date</Label>
       <Input
         type="date"
