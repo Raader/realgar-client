@@ -1,5 +1,6 @@
 import { CashIcon } from "@heroicons/react/solid";
 import AppleMusicIcon from "./apple_music_icon";
+import NamecheapIcon from "./namecheap_icon";
 import NetflixIcon from "./netflix_icon";
 import SpotifyIcon from "./spotify_icon";
 
@@ -17,6 +18,11 @@ const brandIcons = {
   spotify: (
     <div className="bg-green-400 rounded-xl p-2">
       <SpotifyIcon className="w-6 h-6 text-white"></SpotifyIcon>
+    </div>
+  ),
+  namecheap: (
+    <div className=" bg-orange-500 rounded-xl p-2">
+      <NamecheapIcon className="w-6 h-6 text-white"></NamecheapIcon>
     </div>
   ),
   default: (
