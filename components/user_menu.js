@@ -15,8 +15,12 @@ const UserMenu = ({ user }) => {
     <Dropdown
       className="mt-4 lg:mt-0"
       label={
-        <div className="hover:bg-opacity-10 hover:bg-gray-400 hover:text-gray-800 text-gray-600 py-2 px-4 font-bold flex flex-row items-center transition duration-200 rounded-md cursor-pointer">
-          <IconText icon={<Avatar className="-mr-1 sm:mr-0"></Avatar>}>
+        <div className="hover:bg-opacity-10 hover:bg-gray-400 hover:text-gray-800 text-gray-600 p-1 lg:py-2 lg:px-4 font-bold flex flex-row items-center transition duration-200 cursor-pointer rounded-full lg:rounded-md">
+          <IconText
+            icon={
+              <Avatar className="-mr-1 sm:mr-0 w-8 h-8 lg:w-6 lg:h-6"></Avatar>
+            }
+          >
             <div className="flex items-center lg:space-x-1">
               <div className="hidden sm:block">{user?.username}</div>
               <ChevronDownIcon className="h-5 w-5 hidden sm:block"></ChevronDownIcon>
