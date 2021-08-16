@@ -60,7 +60,7 @@ const NavLinks = () => {
             icon={link.icon}
             href={link.href}
             key={link.name}
-            className="bg-gray-400 text-green-500 bg-opacity-10"
+            className="text-green-500 bg-opacity-10"
           >
             {link.name}
           </NavLink>
