@@ -13,7 +13,7 @@ const Modal = ({ children, active, header, close }) => {
       }}
     >
       <div
-        className="w-full lg:1/2 lg:max-w-lg h-screen lg:h-auto bg-gray-100 mx-auto lg:rounded-xl lg:bg-white lg:p-4 overflow-auto animate__animated animate__slideInDown animate__fast"
+        className="w-full lg:1/2 lg:max-w-lg h-screen lg:h-auto bg-gray-100 mx-auto lg:rounded-xl lg:bg-white lg:p-4 overflow-auto animate__animated animate__slideInDown animate__fast pb-10 lg:pb-4"
         ref={ref}
       >
         <div className="flex items-center mb-2 bg-white p-4 lg:mb-0 lg:border-b lg:p-2">
