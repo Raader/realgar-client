@@ -128,7 +128,7 @@ const Dashboard = ({ user }) => {
           style={{ borderRadius: "9999px", padding: "0.75rem" }}
           onClick={openCreateModal}
         >
-          <PlusIcon className="w-6 h-6"></PlusIcon>
+          <PlusIcon className="w-8 h-8"></PlusIcon>
         </PrimaryButton>
       </div>
     </Layout>
