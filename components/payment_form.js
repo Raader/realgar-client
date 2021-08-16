@@ -5,6 +5,7 @@ import brandIcons from "./icons/brand_icons";
 import Input from "./input";
 import Label from "./label";
 import PrimaryButton from "./primary_button";
+import RadioButton from "./radio_button";
 import RadioInput from "./radio_input";
 import SelectInput from "./select_input";
 
@@ -12,7 +13,7 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   const [name, setName] = useState(props.name || "");
   const [price, setPrice] = useState(props.price || "");
   const [currency, setCurrency] = useState(props.currency || "USD");
-  const [type, setType] = useState(props.type || "");
+  const [type, setType] = useState(props.type || "monthly");
   const [startingDate, setStartingDate] = useState(
     props.startingDate
       ? new Date(props.startingDate).toISOString().split("T")[0]
@@ -44,6 +45,7 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
       <Input
         type="number"
         id="price"
+        placeholder="Price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
       ></Input>
@@ -54,22 +56,14 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
         onChange={(e) => setCurrency(e.target.value.toUpperCase())}
       ></Input>
       <Label>Subscription Type</Label>
-      <div className="flex flex-row space-x-4">
-        <RadioInput
-          name="type"
-          value="monthly"
-          onChange={(e) => setType(e.target.value)}
-        >
-          Monthly
-        </RadioInput>
-        <RadioInput
-          name="type"
-          value="annual"
-          onChange={(e) => setType(e.target.value)}
-        >
-          Annual
-        </RadioInput>
-      </div>
+      <RadioButton
+        options={[
+          { label: "Monthly", value: "monthly" },
+          { label: "Annual", value: "annual" },
+        ]}
+        value={type}
+        onChange={(val) => setType(val)}
+      ></RadioButton>
       <Label>Icon</Label>
       <SelectInput
         options={Object.entries(brandIcons).map(([key, value]) => ({
