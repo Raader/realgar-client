@@ -46,7 +46,7 @@ const Dropdown = ({ children, label, className }) => {
       {active ? (
         <div
           className={
-            `absolute bg-white min-w-xl rounded-md shadow-lg min-w-full overflow-hidden z-10 origin-top-right right-0 border animate__animated ${animation.name} ${animation.speed}` +
+            `absolute bg-white rounded-md shadow-lg min-w-full overflow-hidden z-10 origin-top-right right-0 border animate__animated ${animation.name} ${animation.speed}` +
             " " +
             className
           }
