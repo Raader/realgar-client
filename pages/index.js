@@ -11,9 +11,12 @@ import {
   ShieldCheckIcon,
 } from "@heroicons/react/outline";
 
-const Paragraph = ({ children, icon, header }) => {
+const Paragraph = ({ children, icon, header, delay = "0" }) => {
   return (
-    <div className="text-lg p-2 text-gray-500 grid grid-cols-1 lg:grid-cols-5 space-x-2 xl:grid-cols-1">
+    <div
+      className="text-lg p-2 text-gray-500 grid grid-cols-1 lg:grid-cols-5 space-x-2 xl:grid-cols-1 animate__animated animate__fadeIn animate__delay-2s"
+      style={{ "--animate-delay": delay }}
+    >
       <div className="text-center flex flex-col items-center mb-2 text-gray-600">
         {icon}
         <h3 className="text-2xl font-bold">{header}</h3>
@@ -53,7 +56,7 @@ export default function Home({ user }) {
             </Hero>
           </div>
           <div className="col-span-3 flex justify-center">
-            <div className="relative w-full h-60 md:h-[500px] lg:h-[500px]">
+            <div className="relative w-full h-60 md:h-[500px] lg:h-[500px] animate__animated animate__fadeIn">
               <Image
                 src="/mocks.png"
                 alt="realgar on laptop"
@@ -67,6 +70,7 @@ export default function Home({ user }) {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 pb-4 pt-4">
           <Paragraph
             header="Secure"
+            delay="0s"
             icon={<ShieldCheckIcon className="h-20 w-20"></ShieldCheckIcon>}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
@@ -80,6 +84,7 @@ export default function Home({ user }) {
           </Paragraph>
           <Paragraph
             header="Open Source"
+            delay="0.15s"
             icon={<LockOpenIcon className="h-20 w-20"></LockOpenIcon>}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
@@ -93,6 +98,7 @@ export default function Home({ user }) {
           </Paragraph>
           <Paragraph
             header="Completely Free"
+            delay="0.3s"
             icon={<BadgeCheckIcon className="h-20 w-20"></BadgeCheckIcon>}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
