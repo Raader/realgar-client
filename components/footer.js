@@ -23,7 +23,7 @@ const Footer = () => {
               </Link>
             </div>
             <div>
-              <Link href="/dasboard">
+              <Link href="/dashboard">
                 <a className=" hover:text-black">Dashboard</a>
               </Link>
             </div>
@@ -51,7 +51,10 @@ const Footer = () => {
         </div>
         <div className="text-center my-4 border-t py-4">
           Made By{" "}
-          <a href="$" className="text-green-400 hover:text-green-300">
+          <a
+            href="https://www.raader.me"
+            className="text-green-400 hover:text-green-300"
+          >
             Raader
           </a>
         </div>
