@@ -34,7 +34,7 @@ export default function Home({ user }) {
     <Layout user={user}>
       <div className="pb-20">
         <div className="grid grid-cols-1 lg:grid-cols-5 mb-8">
-          <div className="col-span-2 max-w-md">
+          <div className="col-span-2 max-w-md order-2 lg:order-1">
             <Hero>
               <div className="text-4xl text-gray-800">
                 <strong>Realgar</strong>: the free and open source subscription
@@ -55,7 +55,7 @@ export default function Home({ user }) {
               </div>
             </Hero>
           </div>
-          <div className="col-span-3 flex justify-center">
+          <div className="col-span-3 flex justify-center order-1 lg:order-2">
             <div className="relative w-full h-60 md:h-[500px] lg:h-[500px] animate__animated animate__fadeIn">
               <Image
                 src="/mocks.png"
