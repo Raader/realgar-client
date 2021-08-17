@@ -1,15 +1,15 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import mock from "../public/mocks.png";
 import Button from "../components/button";
 import Hero from "../components/hero";
 import Layout from "../components/layout";
-import { get } from "../lib/api";
 import PrimaryButton from "../components/primary_button";
 import {
   BadgeCheckIcon,
   LockOpenIcon,
   ShieldCheckIcon,
 } from "@heroicons/react/outline";
+import Link from "next/link";
 
 const Paragraph = ({ children, icon, header, delay = "0" }) => {
   return (
@@ -27,9 +27,6 @@ const Paragraph = ({ children, icon, header, delay = "0" }) => {
 };
 
 export default function Home({ user }) {
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
   return (
     <Layout user={user}>
       <div className="pb-20">
@@ -47,7 +44,11 @@ export default function Home({ user }) {
               </div>
               <div className="flex flex-row w-full space-x-4">
                 <div>
-                  <PrimaryButton>Get Started</PrimaryButton>
+                  <PrimaryButton>
+                    <Link href="/login">
+                      <a>Get Started</a>
+                    </Link>
+                  </PrimaryButton>
                 </div>
                 <div>
                   <Button>Learn More</Button>
@@ -58,7 +59,7 @@ export default function Home({ user }) {
           <div className="col-span-3 flex justify-center order-1 lg:order-2">
             <div className="relative w-full h-60 md:h-[500px] lg:h-[500px] animate__animated animate__fadeIn">
               <Image
-                src="/mocks.png"
+                src={mock}
                 alt="realgar on laptop"
                 layout="fill"
                 objectFit="contain"
@@ -70,7 +71,7 @@ export default function Home({ user }) {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-8 pb-4 pt-4">
           <Paragraph
             header="Secure"
-            delay="0s"
+            delay="0.15s"
             icon={<ShieldCheckIcon className="h-20 w-20"></ShieldCheckIcon>}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
@@ -84,7 +85,7 @@ export default function Home({ user }) {
           </Paragraph>
           <Paragraph
             header="Open Source"
-            delay="0.15s"
+            delay="0.3s"
             icon={<LockOpenIcon className="h-20 w-20"></LockOpenIcon>}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
@@ -98,7 +99,7 @@ export default function Home({ user }) {
           </Paragraph>
           <Paragraph
             header="Completely Free"
-            delay="0.3s"
+            delay="0.45s"
             icon={<BadgeCheckIcon className="h-20 w-20"></BadgeCheckIcon>}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia,
