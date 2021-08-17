@@ -78,7 +78,7 @@ const Dashboard = ({ user }) => {
 
   return (
     <Layout user={user}>
-      <div className="pb-20">
+      <div className="pb-20 min-h-screen">
         <Modal
           header={modal?.header}
           active={modal?.active}
