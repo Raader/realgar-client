@@ -19,6 +19,11 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Realgar</title>
+        <meta
+          name="description"
+          content="Realgar is a free and open source tool for managing, tracking
+            subcriptions and recurring payments."
+        ></meta>
         <link
           rel="apple-touch-icon"
           sizes="180x180"
