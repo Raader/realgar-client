@@ -11,25 +11,7 @@ import ClearButton from "./clear_button";
 import PaymentDropdown from "./payment_dropdown";
 import IconText from "./icon_text";
 import PaymentHeader from "./payment_header";
-
-function calculateNextPayment({ startingDate, type }) {
-  const firstDate = new Date(startingDate);
-  if (type === "monthly") {
-    const day = firstDate.getDate();
-    firstDate.setDate(day + 30);
-  } else {
-    const year = firstDate.getFullYear();
-    firstDate.setFullYear(year + 1);
-  }
-  return firstDate;
-}
-
-function differenceInDays(d1, d2) {
-  const date1 = new Date(d1);
-  const date2 = new Date(d2);
-  const difference = Math.abs(date2.getTime() - date1.getTime());
-  return Math.floor(difference / 1000 / 60 / 60 / 24);
-}
+import { differenceInDays, formatDate } from "../lib/date_helper";
 
 const Payment = ({ payment, className, icon, onDelete, onEdit }) => {
   return (
@@ -56,11 +38,10 @@ const Payment = ({ payment, className, icon, onDelete, onEdit }) => {
       </div>
       <div className="text-gray-500 pt-2 flex justify-between border-t mt-2">
         <div className="text-gray-600 font-semibold">
-          {differenceInDays(Date.now(), calculateNextPayment(payment))} days
-          left
+          {differenceInDays(payment?.nextDate, Date.now())} days left
         </div>
         <IconText icon={<CalendarIcon className="h-5 w-5"></CalendarIcon>}>
-          {calculateNextPayment(payment).toLocaleDateString()}
+          {formatDate(payment?.nextDate)}
         </IconText>
       </div>
     </Card>
