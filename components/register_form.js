@@ -7,27 +7,56 @@ import GoogleIcon from "./icons/google_icon";
 import GithubIcon from "./icons/github_icon";
 import AppleIcon from "./icons/apple_icon";
 import { useEffect, useState } from "react";
-import { get } from "../lib/api";
+import { get, post } from "../lib/api";
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 const RegisterForm = () => {
+  const router = useRouter();
+
   const [githubURL, setGithubURL] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   useEffect(() => {
     get("/oauth/github").then((url) => setGithubURL(url));
   }, []);
+
+  const handleSubmit = () => {
+    post("/users", { username, email, password })
+      .then(() => router.push("/"))
+      .catch(console.error);
+  };
   return (
     <Form className="text-center">
       <h2 className="text-2xl font-semibold m-4">Sign Up an Account</h2>
       <div>
-        <Input placeholder="Username"></Input>
+        <Input
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        ></Input>
       </div>
       <div>
-        <Input placeholder="Email address" type="email"></Input>
+        <Input
+          placeholder="Email address"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        ></Input>
       </div>
       <div>
-        <Input placeholder="Password" type="password"></Input>
+        <Input
+          placeholder="Password"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        ></Input>
       </div>
-      <PrimaryButton block>Sign Me Up</PrimaryButton>
+      <PrimaryButton block onClick={handleSubmit}>
+        Sign Me Up
+      </PrimaryButton>
       <div className="w-full border-b text-gray-500 mb-2 mt-2">OR</div>
       <Button block className="bg-blue-500 hover:bg-blue-600  text-white">
         <div className="flex flex-row items-center space-x-2">
