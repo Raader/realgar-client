@@ -1,7 +1,7 @@
-import Button from "../components/button";
-import Form from "../components/form";
-import Input from "../components/input";
-import PrimaryButton from "../components/primary_button";
+import Button from "./button";
+import Form from "./form";
+import Input from "./input";
+import PrimaryButton from "./primary_button";
 import Image from "next/image";
 import GoogleIcon from "./icons/google_icon";
 import GithubIcon from "./icons/github_icon";
@@ -10,21 +10,24 @@ import { useEffect, useState } from "react";
 import { get } from "../lib/api";
 import Link from "next/link";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const [githubURL, setGithubURL] = useState("");
   useEffect(() => {
     get("/oauth/github").then((url) => setGithubURL(url));
   }, []);
   return (
     <Form className="text-center">
-      <h2 className="text-2xl font-semibold m-4">Sign in to your Account</h2>
+      <h2 className="text-2xl font-semibold m-4">Sign Up an Account</h2>
+      <div>
+        <Input placeholder="Username"></Input>
+      </div>
       <div>
         <Input placeholder="Email address" type="email"></Input>
       </div>
       <div>
         <Input placeholder="Password" type="password"></Input>
       </div>
-      <PrimaryButton block>Log Me In</PrimaryButton>
+      <PrimaryButton block>Sign Me Up</PrimaryButton>
       <div className="w-full border-b text-gray-500 mb-2 mt-2">OR</div>
       <Button block className="bg-blue-500 hover:bg-blue-600  text-white">
         <div className="flex flex-row items-center space-x-2">
@@ -48,13 +51,13 @@ const LoginForm = () => {
         </a>
       </Button>
       <div className="text-gray-400 m-2">
-        Don&#39;t have an account?{" "}
-        <Link href="/register">
-          <a className="text-green-300">Sign up here</a>
+        Already have an account?{" "}
+        <Link href="/login">
+          <a className="text-green-300">Log in here</a>
         </Link>
       </div>
     </Form>
   );
 };
 
-export default LoginForm;
+export default RegisterForm;
