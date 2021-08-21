@@ -10,6 +10,8 @@ import {
   ShieldCheckIcon,
 } from "@heroicons/react/outline";
 import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
+import { useEffect } from "react";
 
 const Paragraph = ({ children, icon, header, delay = "0" }) => {
   return (
@@ -27,6 +29,12 @@ const Paragraph = ({ children, icon, header, delay = "0" }) => {
 };
 
 export default function Home({ user }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user?.id && router) router.push("/dashboard");
+  }, [user, router]);
+
   return (
     <Layout user={user}>
       <div className="pb-20">
