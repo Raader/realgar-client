@@ -14,13 +14,8 @@ import { useRouter } from "next/dist/client/router";
 const LoginForm = () => {
   const router = useRouter();
 
-  const [githubURL, setGithubURL] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  useEffect(() => {
-    get("/oauth/github").then((url) => setGithubURL(url));
-  }, []);
 
   const handleSubmit = () => {
     post("/session", { email, password })
@@ -65,7 +60,7 @@ const LoginForm = () => {
       </Button>
       <Button block className=" bg-purple-600 hover:bg-purple-700 text-white">
         <a
-          href={githubURL}
+          href="/api/oauth/github"
           className="flex flex-row items-center space-x-2 text-center"
         >
           <GithubIcon className="w-5 h-5 inline-block"></GithubIcon>
