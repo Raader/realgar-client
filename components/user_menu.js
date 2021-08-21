@@ -8,9 +8,19 @@ import ClearButton from "./clear_button";
 import IconText from "./icon_text";
 import { useRouter } from "next/dist/client/router";
 import { remove } from "../lib/api";
+import { useCallback, useContext, useEffect } from "react";
+import UserContext from "./user_context";
 
-const UserMenu = ({ user }) => {
+const UserMenu = () => {
   const router = useRouter();
+  const { user, setUser } = useContext(UserContext);
+
+  const logoutUser = () => {
+    remove("/session").then(() => {
+      setUser(undefined);
+      router.push("/");
+    });
+  };
   return (
     <Dropdown
       className="mt-4 lg:mt-0"
@@ -33,16 +43,14 @@ const UserMenu = ({ user }) => {
         <div className="flex flex-col items-center justify-start p-4">
           <Avatar className="w-20 h-20 lg:h-20 lg:w-20"></Avatar>
           <div className="text-2xl text-gray-700 font-bold mt-2">
-            {user.username}
+            {user?.username}
           </div>
-          <div className="text-gray-500">{user.email}</div>
+          <div className="text-gray-500">{user?.email}</div>
         </div>
         <div className="p-4 flex justify-center">
           <Button
             className="border block bg-transparent hover:bg-gray-100 text-gray-500 hover:text-gray-700"
-            onClick={() => {
-              remove("/session").then(() => router.push("/"));
-            }}
+            onClick={logoutUser}
           >
             <IconText icon={<LogoutIcon className="h-5 w-5"></LogoutIcon>}>
               Logout

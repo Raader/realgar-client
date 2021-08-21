@@ -4,9 +4,11 @@ import "tailwindcss/tailwind.css";
 import { get } from "../lib/api";
 import "../styles/global.css";
 import "animate.css";
+import UserContext from "../components/user_context";
 
 function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState();
+
   useEffect(() => {
     if (user) return;
     get("/user")
@@ -15,6 +17,7 @@ function MyApp({ Component, pageProps }) {
         if (err.response?.status === 401) return;
       });
   }, [Component, user]);
+
   return (
     <>
       <Head>
@@ -51,7 +54,9 @@ function MyApp({ Component, pageProps }) {
           content="default"
         ></meta>
       </Head>
-      <Component user={user} {...pageProps} />
+      <UserContext.Provider value={{ user, setUser }}>
+        <Component {...pageProps} />
+      </UserContext.Provider>
     </>
   );
 }

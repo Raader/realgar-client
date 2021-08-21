@@ -13,7 +13,7 @@ import { get, patch, post, remove } from "../lib/api";
 import brandIcons from "../components/icons/brand_icons";
 import PrimaryButton from "../components/primary_button";
 
-const Dashboard = ({ user }) => {
+const Dashboard = () => {
   const [modal, setModal] = useState({
     header: "Add a payment",
     payment: {},
@@ -77,7 +77,7 @@ const Dashboard = ({ user }) => {
     setModal({ payment: {}, header: "Add a payment", active: true });
 
   return (
-    <Layout user={user}>
+    <Layout>
       <div className="pb-20 min-h-screen">
         <Modal
           header={modal?.header}

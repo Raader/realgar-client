@@ -11,10 +11,11 @@ import {
 } from "@heroicons/react/solid";
 import MenuDropdown from "./menu_dropdown";
 import UserMenu from "./user_menu";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import MenuButton from "./menu_btn";
 import NavbarDrop from "./navbar_drop";
 import { useRouter } from "next/dist/client/router";
+import UserContext from "./user_context";
 
 const NavLinks = () => {
   const router = useRouter();
@@ -70,8 +71,10 @@ const NavLinks = () => {
   );
 };
 
-const AppBar = ({ user }) => {
+const AppBar = ({}) => {
   const [drop, setDrop] = useState(false);
+  const { user, setUser } = useContext(UserContext);
+
   return (
     <div className="sticky top-0 z-10">
       <Navbar>
@@ -85,7 +88,7 @@ const AppBar = ({ user }) => {
         </NavbarStart>
         <NavbarEnd>
           {user ? (
-            <UserMenu user={user}></UserMenu>
+            <UserMenu></UserMenu>
           ) : (
             <>
               <div>
@@ -99,7 +102,7 @@ const AppBar = ({ user }) => {
         </NavbarEnd>
 
         <div className="ml-auto lg:hidden">
-          {user ? <UserMenu user={user}></UserMenu> : <></>}
+          {user ? <UserMenu></UserMenu> : <></>}
         </div>
       </Navbar>
       <NavbarDrop open={drop} extended={user ? 0 : 2}>
