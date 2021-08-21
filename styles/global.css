@@ -1,0 +1,25 @@
+.custom-shape-divider-top-1629544341 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1629544341 svg {
+  position: relative;
+  display: block;
+  width: calc(107% + 1.3px);
+  height: 174px;
+}
+
+.custom-shape-divider-top-1629544341 .shape-fill {
+  fill: #ffffff;
+}
+
+.spacer {
+  background-image: url("/wave-haikei-4.svg");
+  background-position: center;
+  background-size: cover;
+}

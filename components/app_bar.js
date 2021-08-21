@@ -76,7 +76,7 @@ const AppBar = ({}) => {
   const { user, setUser } = useContext(UserContext);
 
   return (
-    <div className="sticky top-0 z-10">
+    <div className="">
       <Navbar>
         <div className="lg:hidden mr-auto cursor-pointer">
           <MenuButton onClick={() => setDrop((prev) => !prev)}></MenuButton>
