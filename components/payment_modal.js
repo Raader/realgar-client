@@ -1,4 +1,4 @@
-import Modal from "./modal";
+import Modal from "./common/modal";
 import PaymentForm from "./payment_form";
 
 const PaymentModal = ({ active, close, onSubmit }) => {

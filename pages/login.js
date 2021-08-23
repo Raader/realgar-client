@@ -1,12 +1,7 @@
 import Brand from "../components/brand";
-import Button from "../components/button";
-import Card from "../components/card";
-import Form from "../components/form";
+import Card from "../components/common/card";
 import Hero from "../components/hero";
-import Input from "../components/input";
-import Layout from "../components/layout";
 import LoginForm from "../components/login_form";
-import PrimaryButton from "../components/primary_button";
 
 const Login = () => {
   return (

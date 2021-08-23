@@ -3,13 +3,9 @@ import {
   PencilAltIcon,
   TrashIcon,
 } from "@heroicons/react/solid";
-import { useState } from "react";
-import { patch, remove } from "../lib/api";
-import ClearButton from "./clear_button";
-import Dropdown from "./dropdown";
-import IconText from "./icon_text";
-import Modal from "./modal";
-import PaymentForm from "./payment_form";
+import ClearButton from "./common/clear_button";
+import Dropdown from "./common/dropdown";
+import IconText from "./common/icon_text";
 
 const PaymentDropdown = ({ onDelete, onEdit }) => {
   return (

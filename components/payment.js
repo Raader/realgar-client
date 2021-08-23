@@ -1,15 +1,7 @@
-import Card from "./card";
-import {
-  CashIcon,
-  CurrencyDollarIcon,
-  DotsVerticalIcon,
-} from "@heroicons/react/solid";
+import Card from "./common/card";
 import { CalendarIcon } from "@heroicons/react/outline";
-import Dropdown from "./dropdown";
-import Button from "./button";
-import ClearButton from "./clear_button";
 import PaymentDropdown from "./payment_dropdown";
-import IconText from "./icon_text";
+import IconText from "./common/icon_text";
 import PaymentHeader from "./payment_header";
 import { differenceInDays, formatDate } from "../lib/date_helper";
 

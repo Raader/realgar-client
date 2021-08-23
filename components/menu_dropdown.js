@@ -4,7 +4,7 @@ import {
   MenuIcon,
   ViewBoardsIcon,
 } from "@heroicons/react/solid";
-import Dropdown from "./dropdown";
+import Dropdown from "./common/dropdown";
 import NavLink from "./nav_link";
 
 const MenuDropdown = ({ user }) => {

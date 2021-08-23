@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { post } from "../lib/api";
-import Form from "./form";
+import Form from "./common/form";
 import brandIcons from "./icons/brand_icons";
-import Input from "./input";
-import Label from "./label";
-import PrimaryButton from "./primary_button";
-import RadioButton from "./radio_button";
-import RadioInput from "./radio_input";
-import SelectInput from "./select_input";
+import Input from "./common/input";
+import Label from "./common/label";
+import PrimaryButton from "./common/primary_button";
+import RadioButton from "./common/radio_button";
+import SelectInput from "./common/select_input";
 
 const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   const [name, setName] = useState(props.name || "");

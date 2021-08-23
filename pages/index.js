@@ -1,9 +1,8 @@
 import Image from "next/image";
 import mock from "../public/mocks.png";
-import Button from "../components/button";
+import Button from "../components/common/button";
 import Hero from "../components/hero";
-import Layout from "../components/layout";
-import PrimaryButton from "../components/primary_button";
+import PrimaryButton from "../components/common/primary_button";
 import {
   BadgeCheckIcon,
   LockOpenIcon,

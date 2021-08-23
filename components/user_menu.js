@@ -1,14 +1,12 @@
 import { ChevronDownIcon } from "@heroicons/react/outline";
-import Avatar from "./avatar";
-import Dropdown from "./dropdown";
-import NavLink from "./nav_link";
-import Button from "./button";
+import Avatar from "./common/avatar";
+import Dropdown from "./common/dropdown";
+import Button from "./common/button";
 import { LogoutIcon } from "@heroicons/react/solid";
-import ClearButton from "./clear_button";
-import IconText from "./icon_text";
+import IconText from "./common/icon_text";
 import { useRouter } from "next/dist/client/router";
 import { remove } from "../lib/api";
-import { useCallback, useContext, useEffect } from "react";
+import { useContext } from "react";
 import UserContext from "./user_context";
 
 const UserMenu = () => {

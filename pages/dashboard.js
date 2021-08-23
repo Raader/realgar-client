@@ -1,17 +1,13 @@
-import { CashIcon, PlusIcon } from "@heroicons/react/solid";
-import AppleMusicIcon from "../components/icons/apple_music_icon";
-import NetflixIcon from "../components/icons/netflix_icon";
-import SpotifyIcon from "../components/icons/spotify_icon";
+import { PlusIcon } from "@heroicons/react/solid";
 import Layout from "../components/layout";
 import Payment from "../components/payment";
-import Button from "../components/button";
-import Modal from "../components/modal";
+import Button from "../components/common/button";
+import Modal from "../components/common/modal";
 import PaymentForm from "../components/payment_form";
 import { useContext, useEffect, useState } from "react";
-import PaymentModal from "../components/payment_modal";
 import { get, patch, post, remove } from "../lib/api";
 import brandIcons from "../components/icons/brand_icons";
-import PrimaryButton from "../components/primary_button";
+import PrimaryButton from "../components/common/primary_button";
 import UserContext from "../components/user_context";
 
 const Dashboard = () => {
