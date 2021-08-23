@@ -7,11 +7,12 @@ import Payment from "../components/payment";
 import Button from "../components/button";
 import Modal from "../components/modal";
 import PaymentForm from "../components/payment_form";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import PaymentModal from "../components/payment_modal";
 import { get, patch, post, remove } from "../lib/api";
 import brandIcons from "../components/icons/brand_icons";
 import PrimaryButton from "../components/primary_button";
+import UserContext from "../components/user_context";
 
 const Dashboard = () => {
   const [modal, setModal] = useState({
@@ -20,6 +21,8 @@ const Dashboard = () => {
     active: false,
   });
   const [payments, setPayments] = useState([]);
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     if (payments.length <= 0) {
@@ -106,7 +109,7 @@ const Dashboard = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
           {payments.map((payment) => (
             <Payment
-              payment={payment}
+              payment={{ ...payment, currency: user?.settings?.currency }}
               key={payment.id}
               className={
                 payment.deleted ? "animate__fadeOut animate__faster" : ""
