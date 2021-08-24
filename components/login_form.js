@@ -45,19 +45,19 @@ const LoginForm = () => {
         Log Me In
       </PrimaryButton>
       <div className="w-full border-b text-gray-500 mb-2 mt-2">OR</div>
-      <Button block className="bg-blue-500 hover:bg-blue-600  text-white">
+      <Button block className="bg-blue-500 hover:!bg-blue-600  text-white">
         <div className="flex flex-row items-center space-x-2">
           <GoogleIcon className="w-5 h-5 inline-block"></GoogleIcon>
           <div>Continue With Google</div>
         </div>
       </Button>
-      <Button block className="bg-gray-900 hover:bg-gray-700 text-white">
+      <Button block className="bg-gray-900 hover:!bg-gray-700 text-white">
         <div className="flex flex-row items-center space-x-2">
           <AppleIcon className="w-5 h-5 inline-block"></AppleIcon>
           <div>Continue With Apple</div>
         </div>
       </Button>
-      <Button block className=" bg-purple-600 hover:bg-purple-700 text-white">
+      <Button block className=" bg-purple-600 hover:!bg-purple-700 text-white">
         <a
           href="/api/oauth/github"
           className="flex flex-row items-center space-x-2 text-center"
