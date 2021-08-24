@@ -1,16 +1,20 @@
 import { PlusIcon } from "@heroicons/react/solid";
-import Layout from "../components/layout";
-import Payment from "../components/payment";
-import Button from "../components/common/button";
-import Modal from "../components/common/modal";
-import PaymentForm from "../components/payment_form";
+import Layout from "../../components/layout";
+import Payment from "../../components/payment";
+import Button from "../../components/common/button";
+import Modal from "../../components/common/modal";
+import PaymentForm from "../../components/payment_form";
 import { useContext, useEffect, useState } from "react";
-import { get, patch, post, remove } from "../lib/api";
-import brandIcons from "../components/icons/brand_icons";
-import PrimaryButton from "../components/common/primary_button";
-import UserContext from "../components/user_context";
+import { get, patch, post, remove } from "../../lib/api";
+import brandIcons from "../../components/icons/brand_icons";
+import PrimaryButton from "../../components/common/primary_button";
+import UserContext from "../../components/user_context";
+import IconText from "../../components/common/icon_text";
+import Link from "next/link";
+import { useRouter } from "next/dist/client/router";
 
 const Dashboard = () => {
+  const router = useRouter();
   const [modal, setModal] = useState({
     header: "Add a payment",
     payment: {},
@@ -98,8 +102,12 @@ const Dashboard = () => {
         </Modal>
         <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
           <h3 className="text-3xl font-semibold">Recurring Payments</h3>
-          <Button className="ml-auto hidden lg:block" onClick={openCreateModal}>
-            <PlusIcon className="w-5 h-5"></PlusIcon>
+          <Button className="ml-auto hidden lg:block">
+            <IconText icon={<PlusIcon className="w-5 h-5"></PlusIcon>}>
+              <Link href="/dashboard/payments/create">
+                <a>Create Payment</a>
+              </Link>
+            </IconText>
           </Button>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
@@ -113,11 +121,7 @@ const Dashboard = () => {
               icon={brandIcons[payment.icon] || brandIcons.default}
               onDelete={() => deletePayment(payment)}
               onEdit={() =>
-                setModal(() => ({
-                  active: true,
-                  payment,
-                  header: "Edit the payment",
-                }))
+                router.push(`/dashboard/payments/edit?id=${payment.id}`)
               }
             ></Payment>
           ))}
