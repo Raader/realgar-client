@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <div className="lg:h-screen bg-gray-50 pb-8 lg:pb-0">
       <div className="grid grid-cols-1 md:grid-cols-5 items-center max-w-4xl mx-auto py-10 px-4 h-5/6">
-        <div className="col-span-3">
+        <div className="col-span-3 mb-4">
           <Hero>
             <div>
               <Brand height={80} width={300}></Brand>
