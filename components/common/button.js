@@ -1,13 +1,15 @@
+import { overrideTailwindClasses } from "tailwind-override";
+
 const Button = ({ children, onClick, block, className, type, ...props }) => {
   return (
     <button
       onClick={onClick}
       type={type}
-      className={
-        `appearance-none bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-200 font-semibold select-none${
+      className={overrideTailwindClasses(
+        `appearance-none bg-gray-200 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-200 font-semibold select-none ${
           block ? "block w-full" : ""
-        } ` + className
-      }
+        } ${className}`
+      )}
       {...props}
     >
       {children}
