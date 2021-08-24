@@ -78,7 +78,7 @@ const AppBar = ({}) => {
   return (
     <div className="sticky top-0 lg:static z-30">
       <Navbar>
-        <div className="lg:hidden mr-auto cursor-pointer">
+        <div className="lg:hidden cursor-pointer">
           <MenuButton onClick={() => setDrop((prev) => !prev)}></MenuButton>
         </div>
 

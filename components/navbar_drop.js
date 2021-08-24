@@ -3,7 +3,7 @@ import { Children } from "react";
 const NavbarDrop = ({ children, open, extended }) => {
   return (
     <div
-      className="w-full bg-white overflow-hidden transition-all duration-500 lg:hidden border-b"
+      className="w-full bg-white overflow-hidden transition-all duration-500 lg:hidden"
       style={
         open
           ? {
