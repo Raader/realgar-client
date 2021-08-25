@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon, CogIcon } from "@heroicons/react/outline";
 import Avatar from "./common/avatar";
 import Dropdown from "./common/dropdown";
 import Button from "./common/button";
@@ -45,13 +45,21 @@ const UserMenu = () => {
           </div>
           <div className="text-gray-500">{user?.email}</div>
         </div>
-        <div className="p-4 flex justify-center">
+        <div className="p-4 flex justif-center">
           <Button
             className="border block bg-transparent hover:bg-gray-100 text-gray-500 hover:text-gray-700"
             onClick={logoutUser}
           >
             <IconText icon={<LogoutIcon className="h-5 w-5"></LogoutIcon>}>
               Logout
+            </IconText>
+          </Button>
+          <Button
+            className="border block bg-transparent hover:bg-gray-100 text-gray-500 hover:text-gray-700 ml-4"
+            onClick={() => router.push("/user/settings")}
+          >
+            <IconText icon={<CogIcon className="h-5 w-5"></CogIcon>}>
+              Settings
             </IconText>
           </Button>
         </div>
