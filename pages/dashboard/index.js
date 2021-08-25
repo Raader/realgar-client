@@ -9,6 +9,7 @@ import PrimaryButton from "../../components/common/primary_button";
 import UserContext from "../../components/user_context";
 import IconText from "../../components/common/icon_text";
 import { useRouter } from "next/dist/client/router";
+import { CalendarIcon, DotsHorizontalIcon } from "@heroicons/react/outline";
 
 const Dashboard = () => {
   const router = useRouter();
@@ -57,13 +58,13 @@ const Dashboard = () => {
   return (
     <Layout>
       <div className="pb-20 min-h-screen">
-        <div className="pb-2 mb-4 border-b-2 text-gray-800 flex items-middle">
-          <h3 className="text-3xl font-semibold">Recurring Payments</h3>
+        <div className="pb-2 mb-4 text-gray-600 items-center lg:justify-start flex lg:flex border-b">
+          <h3 className="text-3xl font-bold">Recurring Payments</h3>
           <Button
-            className="ml-auto hidden lg:block"
+            className="ml-auto hidden lg:block bg-transparent hover:!bg-gray-100"
             onClick={() => router.push("/dashboard/payments/create")}
           >
-            <IconText icon={<PlusIcon className="w-5 h-5"></PlusIcon>}>
+            <IconText icon={<PlusIcon className="w-5 h-5 ml-2"></PlusIcon>}>
               Create Payment
             </IconText>
           </Button>
