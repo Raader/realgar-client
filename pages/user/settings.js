@@ -12,11 +12,18 @@ import PrimaryButton from "../../components/common/primary_button";
 import Layout from "../../components/layout";
 import SettingsForm from "../../components/settings_form";
 import UserContext from "../../components/user_context";
-import { put } from "../../lib/api";
+import { put, remove } from "../../lib/api";
 
 const Settings = () => {
   const router = useRouter();
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+
+  const logoutUser = () => {
+    remove("/session").then(() => {
+      setUser(undefined);
+      router.push("/");
+    });
+  };
 
   const saveSettings = (settings) => {
     put("/user/settings", settings)
@@ -49,7 +56,7 @@ const Settings = () => {
         </div>
         <div className="flex items-center whitespace-nowrap my-4 mb-16">
           <div>
-            <Button>
+            <Button onClick={logoutUser}>
               <IconText icon={<LogoutIcon className="h-5 w-5"></LogoutIcon>}>
                 Logout
               </IconText>
