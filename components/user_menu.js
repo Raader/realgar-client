@@ -23,7 +23,7 @@ const UserMenu = () => {
     <Dropdown
       className="mt-4 lg:mt-0"
       label={
-        <div className="hover:bg-opacity-10 hover:bg-gray-400 hover:text-gray-800 text-gray-600 p-1 lg:py-2 lg:px-4 font-bold flex flex-row items-center transition duration-200 cursor-pointer rounded-full lg:rounded-md">
+        <div className="hover:bg-opacity-10 hover:bg-gray-400 hover:text-gray-800 text-gray-600 p-1 lg:py-2 lg:px-4 font-bold flex flex-row items-center transition duration-200 cursor-pointer rounded-full lg:rounded-md no-highlight">
           <IconText
             icon={
               <Avatar className="-mr-1 sm:mr-0 w-8 h-8 lg:w-6 lg:h-6"></Avatar>

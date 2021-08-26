@@ -11,7 +11,7 @@ const PaymentDropdown = ({ onDelete, onEdit }) => {
   return (
     <Dropdown
       label={
-        <ClearButton>
+        <ClearButton className="no-highlight">
           <DotsVerticalIcon className="w-5 h-5"></DotsVerticalIcon>
         </ClearButton>
       }
