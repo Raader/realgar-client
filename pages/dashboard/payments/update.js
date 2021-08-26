@@ -36,17 +36,11 @@ const EditPage = () => {
       </div>
       <div className="max-w-lg mx-auto">
         <div className="py-4">
-          {payment ? (
-            <div className="animate__animated animate__fadeIn">
-              <PaymentForm
-                submitText="Update"
-                onSubmit={handleSubmit}
-                {...payment}
-              ></PaymentForm>
-            </div>
-          ) : (
-            <div className="h-[500px]"></div>
-          )}
+          <PaymentForm
+            submitText="Update"
+            onSubmit={handleSubmit}
+            payment={payment}
+          ></PaymentForm>
         </div>
       </div>
     </Layout>
