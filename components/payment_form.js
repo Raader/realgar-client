@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "./common/form";
 import brandIcons from "./icons/brand_icons";
 import Input from "./common/input";
@@ -7,16 +7,14 @@ import PrimaryButton from "./common/primary_button";
 import RadioButton from "./common/radio_button";
 import SelectInput from "./common/select_input";
 
-const PaymentForm = ({ onSubmit, submitText, ...props }) => {
-  const [name, setName] = useState(props.name || "");
-  const [price, setPrice] = useState(props.price || "");
-  const [type, setType] = useState(props.type || "monthly");
+const PaymentForm = ({ onSubmit, submitText, payment, ...props }) => {
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState("");
+  const [type, setType] = useState("monthly");
   const [startingDate, setStartingDate] = useState(
-    props.startingDate
-      ? new Date(props.startingDate).toISOString().split("T")[0]
-      : new Date().toISOString().split("T")[0]
+    new Date().toISOString().split("T")[0]
   );
-  const [icon, setIcon] = useState(props.icon || "");
+  const [icon, setIcon] = useState("");
 
   const handleSubmit = () => {
     onSubmit?.({
@@ -27,6 +25,19 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
       icon,
     });
   };
+
+  useEffect(() => {
+    if (!payment) return;
+    setName(payment.name);
+    setPrice(payment.price);
+    setType(payment.type || "monthly");
+    setStartingDate(
+      payment.startingDate
+        ? new Date(payment.startingDate).toISOString().split("T")[0]
+        : new Date().toISOString().split("T")[0]
+    );
+    setIcon(payment.icon);
+  }, [payment]);
 
   return (
     <Form>
