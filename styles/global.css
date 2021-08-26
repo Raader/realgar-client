@@ -23,3 +23,14 @@
   background-position: center;
   background-size: cover;
 }
+
+.layout-animation {
+  animation: slideInRight; /* referring directly to the animation's @keyframe declaration */
+  animation-duration: 0.5s;
+}
+
+@media screen and (min-width: 768px) {
+  .layout-animation {
+    animation: none;
+  }
+}
