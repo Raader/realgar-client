@@ -14,7 +14,7 @@ const PaymentForm = ({ onSubmit, submitText, ...props }) => {
   const [startingDate, setStartingDate] = useState(
     props.startingDate
       ? new Date(props.startingDate).toISOString().split("T")[0]
-      : ""
+      : new Date().toISOString().split("T")[0]
   );
   const [icon, setIcon] = useState(props.icon || "");
 
