@@ -81,7 +81,11 @@ const PaymentForm = ({ onSubmit, submitText, payment, ...props }) => {
         value={startingDate}
         onChange={(e) => setStartingDate(e.target.value)}
       ></Input>
-      <PrimaryButton type="submit" onClick={handleSubmit}>
+      <PrimaryButton
+        type="submit"
+        onClick={handleSubmit}
+        className="!mt-8 text-2xl"
+      >
         {submitText || "add"}
       </PrimaryButton>
     </Form>
