@@ -57,15 +57,19 @@ const LoginForm = () => {
           <div>Continue With Apple</div>
         </div>
       </Button>
-      <Button block className=" bg-purple-600 hover:!bg-purple-700 text-white">
-        <a
-          href="/api/oauth/github"
-          className="flex flex-row items-center space-x-2 text-center"
-        >
-          <GithubIcon className="w-5 h-5 inline-block"></GithubIcon>
-          <div>Continue With Github</div>
+      <Link href="/api/oauth/github">
+        <a>
+          <Button
+            block
+            className=" bg-purple-600 hover:!bg-purple-700 text-white"
+          >
+            <div className="flex flex-row items-center space-x-2 text-center">
+              <GithubIcon className="w-5 h-5 inline-block"></GithubIcon>
+              <div>Continue With Github</div>
+            </div>
+          </Button>
         </a>
-      </Button>
+      </Link>
       <div className="text-gray-400 m-2">
         Don&#39;t have an account?{" "}
         <Link href="/register">
