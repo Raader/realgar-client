@@ -56,44 +56,46 @@ const Dashboard = () => {
   };
 
   return (
-    <Layout>
-      <div className="pb-20 min-h-screen">
-        <div className="pb-2 mb-4 text-gray-600 items-center lg:justify-start flex lg:flex border-b">
-          <h3 className="text-3xl font-bold">Recurring Payments</h3>
-          <Button
-            className="ml-auto hidden lg:block bg-transparent hover:!bg-gray-100"
-            onClick={() => router.push("/dashboard/payments/create")}
-          >
-            <IconText icon={<PlusIcon className="w-5 h-5 ml-2"></PlusIcon>}>
-              Create Payment
-            </IconText>
-          </Button>
+    <>
+      <Layout>
+        <div className="pb-20 min-h-screen">
+          <div className="pb-2 mb-4 text-gray-600 items-center lg:justify-start flex lg:flex border-b">
+            <h3 className="text-3xl font-bold">Recurring Payments</h3>
+            <Button
+              className="ml-auto hidden lg:block bg-transparent hover:!bg-gray-100"
+              onClick={() => router.push("/dashboard/payments/create")}
+            >
+              <IconText icon={<PlusIcon className="w-5 h-5 ml-2"></PlusIcon>}>
+                Create Payment
+              </IconText>
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
+            {payments.map((payment) => (
+              <Payment
+                payment={{ ...payment, currency: user?.settings?.currency }}
+                key={payment.id}
+                className={
+                  payment.deleted ? "animate__fadeOut animate__faster" : ""
+                }
+                icon={brandIcons[payment.icon] || brandIcons.default}
+                onDelete={() => deletePayment(payment)}
+                onEdit={() =>
+                  router.push(`/dashboard/payments/update?id=${payment.id}`)
+                }
+              ></Payment>
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4">
-          {payments.map((payment) => (
-            <Payment
-              payment={{ ...payment, currency: user?.settings?.currency }}
-              key={payment.id}
-              className={
-                payment.deleted ? "animate__fadeOut animate__faster" : ""
-              }
-              icon={brandIcons[payment.icon] || brandIcons.default}
-              onDelete={() => deletePayment(payment)}
-              onEdit={() =>
-                router.push(`/dashboard/payments/update?id=${payment.id}`)
-              }
-            ></Payment>
-          ))}
-        </div>
-        <PrimaryButton
-          className="fixed right-5 bottom-5 shadow-md lg:hidden"
-          style={{ borderRadius: "9999px", padding: "0.75rem" }}
-          onClick={() => router.push("/dashboard/payments/create")}
-        >
-          <PlusIcon className="w-8 h-8"></PlusIcon>
-        </PrimaryButton>
-      </div>
-    </Layout>
+      </Layout>
+      <PrimaryButton
+        className="!fixed right-5 bottom-5 shadow-md lg:hidden"
+        style={{ borderRadius: "9999px", padding: "0.75rem" }}
+        onClick={() => router.push("/dashboard/payments/create")}
+      >
+        <PlusIcon className="w-8 h-8"></PlusIcon>
+      </PrimaryButton>
+    </>
   );
 };
 
