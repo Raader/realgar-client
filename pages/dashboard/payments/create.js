@@ -24,6 +24,13 @@ const CreatePage = () => {
       .then(() => router.push("/dashboard"))
       .catch((err) => console.error(err));
   };
+
+  useEffect(() => {
+    get("/templates")
+      .then((data) => setTemplates(data))
+      .catch(console.error);
+  }, []);
+
   return (
     <Layout>
       <div className="max-w-lg mx-auto">
@@ -37,6 +44,36 @@ const CreatePage = () => {
       </div>
       <div className="max-w-lg mx-auto">
         <div className="py-4">
+          <Label>Templates</Label>
+          <div className=" overflow-x-auto whitespace-nowrap py-4 mb-2 -mx-4">
+            {templates.map((template) => (
+              <Card key={template.name} className="w-[300px] inline-block mx-2">
+                <IconText icon={brandIcons[template.icon]}>
+                  <h3 className="text-2xl">{template.name}</h3>
+                </IconText>
+                <div className="flex space-x-1 items-baseline mt-2">
+                  <div className="text-xl font-extrabold text-gray-800">
+                    {template.price}
+                  </div>
+                  <div className="text-xs text-gray-500">
+                    {user?.settings?.currency} /{" "}
+                    {template.type === "monthly" ? "per month" : "per year"}
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <Button
+                    block
+                    className="!bg-gray-50 hover:!bg-gray-100"
+                    onClick={() => {
+                      setPayment(template);
+                    }}
+                  >
+                    Select This Template
+                  </Button>
+                </div>
+              </Card>
+            ))}
+          </div>
           <PaymentForm
             payment={payment}
             submitText="Create"
