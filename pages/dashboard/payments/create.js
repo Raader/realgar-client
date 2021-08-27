@@ -18,11 +18,20 @@ const CreatePage = () => {
   const router = useRouter();
   const [templates, setTemplates] = useState([]);
   const [payment, setPayment] = useState();
+  const [formErrors, setFormErrors] = useState([]);
 
   const handleSubmit = (payment) => {
     post("/user/payments", payment)
       .then(() => router.push("/dashboard"))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.data.errors) {
+          const errors = {};
+          err.response.data.errors.forEach(
+            (error) => (errors[error.field] = error.message)
+          );
+          setFormErrors(errors);
+        }
+      });
   };
 
   useEffect(() => {
@@ -66,6 +75,7 @@ const CreatePage = () => {
                     className="!bg-gray-50 hover:!bg-gray-100"
                     onClick={() => {
                       setPayment(template);
+                      setFormErrors([]);
                     }}
                   >
                     Select This Template
@@ -78,6 +88,7 @@ const CreatePage = () => {
             payment={payment}
             submitText="Create"
             onSubmit={handleSubmit}
+            errors={formErrors}
           ></PaymentForm>
         </div>
       </div>
