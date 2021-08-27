@@ -27,7 +27,10 @@ const Settings = () => {
 
   const saveSettings = (settings) => {
     put("/user/settings", settings)
-      .then(() => router.push("/dashboard"))
+      .then(() => {
+        setUser((prev) => ({ ...prev, settings }));
+        router.push("/dashboard");
+      })
       .catch(console.error);
   };
   return (
