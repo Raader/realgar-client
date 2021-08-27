@@ -7,7 +7,7 @@ import PrimaryButton from "./common/primary_button";
 import RadioButton from "./common/radio_button";
 import SelectInput from "./common/select_input";
 
-const PaymentForm = ({ onSubmit, submitText, payment, ...props }) => {
+const PaymentForm = ({ onSubmit, submitText, payment, errors, ...props }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [type, setType] = useState("monthly");
@@ -47,6 +47,7 @@ const PaymentForm = ({ onSubmit, submitText, payment, ...props }) => {
         id="name"
         value={name}
         onChange={(e) => setName(e.target.value)}
+        error={errors?.name}
       ></Input>
       <Label forId="price">Price</Label>
       <Input
@@ -55,6 +56,7 @@ const PaymentForm = ({ onSubmit, submitText, payment, ...props }) => {
         placeholder="Price"
         value={price}
         onChange={(e) => setPrice(e.target.value)}
+        error={errors?.price}
       ></Input>
       <Label>Subscription Type</Label>
       <RadioButton
@@ -80,6 +82,7 @@ const PaymentForm = ({ onSubmit, submitText, payment, ...props }) => {
         id="startingDate"
         value={startingDate}
         onChange={(e) => setStartingDate(e.target.value)}
+        error={errors?.startingDate}
       ></Input>
       <PrimaryButton
         type="submit"
