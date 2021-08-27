@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 const EditPage = () => {
   const router = useRouter();
   const [payment, setPayment] = useState();
+  const [formErrors, setFormErrors] = useState([]);
 
   useEffect(() => {
     if (router?.query?.id) {
@@ -21,8 +22,17 @@ const EditPage = () => {
     if (!payment) return;
     patch("/user/payments/" + payment.id, update)
       .then(() => router.push("/dashboard"))
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        if (err.response.data.errors) {
+          const errors = {};
+          err.response.data.errors.forEach(
+            (error) => (errors[error.field] = error.message)
+          );
+          setFormErrors(errors);
+        }
+      });
   };
+
   return (
     <Layout>
       <div className="max-w-lg mx-auto">
@@ -40,6 +50,7 @@ const EditPage = () => {
             submitText="Update"
             onSubmit={handleSubmit}
             payment={payment}
+            errors={formErrors}
           ></PaymentForm>
         </div>
       </div>
