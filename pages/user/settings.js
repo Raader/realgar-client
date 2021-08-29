@@ -53,9 +53,9 @@ const Settings = () => {
           </div>
           <Form>
             <Label>Username</Label>
-            <Input value={user?.username} disabled></Input>
+            <Input placeholder={user?.username} disabled></Input>
             <Label>Email</Label>
-            <Input type="email" value={user?.email} disabled></Input>
+            <Input type="email" placeholder={user?.email} disabled></Input>
           </Form>
         </div>
         <div className="flex items-center whitespace-nowrap my-4 mb-16">
