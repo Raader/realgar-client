@@ -13,6 +13,7 @@ import Layout from "../../components/layout";
 import SettingsForm from "../../components/settings_form";
 import UserContext from "../../components/user_context";
 import { put, remove } from "../../lib/api";
+import { ToastContainer, toast } from "react-toastify";
 
 const Settings = () => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const Settings = () => {
     put("/user/settings", settings)
       .then(() => {
         setUser((prev) => ({ ...prev, settings }));
-        router.push("/dashboard");
+        toast("User settings saved!");
       })
       .catch(console.error);
   };
@@ -83,6 +84,11 @@ const Settings = () => {
           ></SettingsForm>
         </div>
       </div>
+      <ToastContainer
+        position="bottom-center"
+        theme="light"
+        hideProgressBar
+      ></ToastContainer>
     </Layout>
   );
 };
