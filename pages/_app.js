@@ -4,6 +4,7 @@ import "tailwindcss/tailwind.css";
 import { get } from "../lib/api";
 import "../styles/global.css";
 import "animate.css";
+import "react-toastify/dist/ReactToastify.css";
 import UserContext from "../components/user_context";
 
 function MyApp({ Component, pageProps }) {
