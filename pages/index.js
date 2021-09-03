@@ -56,7 +56,7 @@ const MainHero = () => {
         </Hero>
       </div>
       <div className="col-span-3 flex justify-center order-1 lg:order-2">
-        <div className="relative w-full h-60 md:h-[500px] lg:h-[500px] animate__animated animate__fadeIn">
+        <div className="relative w-full h-60 md:h-[500px] lg:h-[500px] animate__animated animate__fadeIn hidden lg:block">
           <Image
             src={mock}
             alt="realgar on laptop"
