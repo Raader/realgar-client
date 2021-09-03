@@ -27,7 +27,7 @@ const Dashboard = () => {
             delay += interval;
           }
         })
-        .catch();
+        .catch(console.error);
     }
   }, [payments]);
 
