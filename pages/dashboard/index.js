@@ -17,10 +17,6 @@ const Dashboard = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
-    if(router && !user) router.push("/register")
-  },[user],router)
-
-  useEffect(() => {
     if (payments.length <= 0) {
       get("/user/payments")
         .then((data) => {
