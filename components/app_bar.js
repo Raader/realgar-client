@@ -73,11 +73,21 @@ const NavLinks = () => {
 
 const AppBar = ({}) => {
   const [drop, setDrop] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { user, setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    const scrollHandler = (e) => {
+      if (window.scrollY > 20 && !scrolled) setScrolled(true);
+      else if (window.scrollY < 20 && scrolled) setScrolled(false);
+    };
+    document.addEventListener("scroll", scrollHandler);
+    return () => document.removeEventListener("scroll", scrollHandler);
+  }, [scrolled]);
 
   return (
     <div className="sticky top-0 z-30">
-      <Navbar>
+      <Navbar dropShadow={scrolled}>
         <div className="lg:hidden cursor-pointer">
           <MenuButton onClick={() => setDrop((prev) => !prev)}></MenuButton>
         </div>
