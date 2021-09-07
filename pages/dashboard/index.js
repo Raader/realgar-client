@@ -17,6 +17,10 @@ const Dashboard = () => {
   const { user } = useContext(UserContext);
 
   useEffect(() => {
+    if (localStorage.getItem("loggedIn") !== "true") router.push("/register");
+  }, [router]);
+
+  useEffect(() => {
     if (payments.length <= 0) {
       get("/user/payments")
         .then((data) => {

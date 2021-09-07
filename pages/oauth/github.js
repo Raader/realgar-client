@@ -7,9 +7,10 @@ const Github = ({}) => {
 
   useEffect(() => {
     if (!router.query.code) return;
-    post(`/oauth/github?code=${router.query?.code}`).finally(() =>
-      router.push("/")
-    );
+    post(`/oauth/github?code=${router.query?.code}`).finally(() => {
+      localStorage.setItem("loggedIn", "true");
+      router.push("/");
+    });
   }, [router]);
 
   return <div></div>;

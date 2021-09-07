@@ -19,7 +19,10 @@ const RegisterForm = () => {
 
   const handleSubmit = () => {
     post("/users", { username, email, password })
-      .then(() => router.push("/"))
+      .then(() => {
+        localStorage.setItem("loggedIn", "true");
+        router.push("/");
+      })
       .catch(console.error);
   };
 

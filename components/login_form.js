@@ -18,7 +18,10 @@ const LoginForm = () => {
 
   const handleSubmit = () => {
     post("/session", { email, password })
-      .then(() => router.push("/"))
+      .then(() => {
+        localStorage.setItem("loggedIn", "true");
+        router.push("/");
+      })
       .catch(console.error);
   };
 

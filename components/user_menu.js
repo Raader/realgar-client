@@ -16,6 +16,7 @@ const UserMenu = () => {
   const logoutUser = () => {
     remove("/session").then(() => {
       setUser(undefined);
+      localStorage.setItem("loggedIn", "false");
       router.push("/");
     });
   };
